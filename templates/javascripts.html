@@ -1,7 +1,7 @@
-{#{% load compress %}#}
+{% load compress %}
 {% load staticfiles %}
 
-{#{% compress js %}#}
+{% compress js %}
 <script type="text/javascript" src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
 <script type="text/javascript" src="{% static 'bower_components/bootstrap/dist/js/bootstrap.js' %}"></script>
 <script type="text/javascript" src="{% static 'bower_components/bootstrap-material-design/dist/js/material.js' %}"></script>
@@ -33,5 +33,8 @@
 <script type="text/javascript" src="{% static 'javascripts/posts/controllers/posts.controller.js' %}"></script>
 <script type="text/javascript" src="{% static 'javascripts/posts/directives/post.directive.js' %}"></script>
 <script type="text/javascript" src="{% static 'javascripts/posts/controllers/new-post.controller.js' %}"></script>
-
-{#{% endcompress %}#}
+<script type="text/javascript" src="{% static 'javascripts/profiles/profiles.module.js' %}"></script>
+<script type="text/javascript" src="{% static 'javascripts/profiles/services/profile.service.js' %}"></script>
+<script type="text/javascript" src="{% static 'javascripts/profiles/controllers/profile.controller.js' %}"></script>
+<script type="text/javascript" src="{% static 'javascripts/profiles/controllers/profile-settings.controller.js' %}"></script>
+{% endcompress %}

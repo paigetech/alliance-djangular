@@ -1,4 +1,7 @@
-from django.shortcuts import render
+import json
+
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
 
 from rest_framework import permissions, viewsets
 from rest_framework import status, views
@@ -7,12 +10,6 @@ from rest_framework.response import Response
 from authentication.models import Account
 from authentication.permissions import IsAccountOwner
 from authentication.serializers import AccountSerializer
-
-import json
-
-from django.contrib.auth import authenticate, login
-from django.contrib.auth import logout
-
 
 
 class AccountViewSet(viewsets.ModelViewSet):
@@ -41,8 +38,6 @@ class AccountViewSet(viewsets.ModelViewSet):
             'status': 'Bad request',
             'message': 'Account could not be created with received data.'
         }, status=status.HTTP_400_BAD_REQUEST)
-
-
 
 
 class LoginView(views.APIView):
