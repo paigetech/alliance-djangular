@@ -6,8 +6,8 @@
   'use strict';
 
   angular
-    .module('thinkster.layout.controllers')
-    .controller('NavbarController', NavbarController);
+      .module('thinkster.layout.controllers')
+      .controller('NavbarController', NavbarController);
 
   NavbarController.$inject = ['$scope', 'Authentication'];
 
@@ -15,17 +15,17 @@
   * @namespace NavbarController
   */
   function NavbarController($scope, Authentication) {
-    var vm = this;
+      var vm = this;
 
-    vm.logout = logout;
+      vm.logout = logout;
 
-    /**
-    * @name logout
-    * @desc Log the user out
-    * @memberOf thinkster.layout.controllers.NavbarController
-    */
-    function logout() {
-      Authentication.logout();
-    }
+      /**
+      * @name logout
+      * @desc Log the user out
+      * @memberOf thinkster.layout.controllers.NavbarController
+      */
+      function logout() {
+        Authentication.logout();
+      }
   }
 })();
