@@ -23,7 +23,8 @@
     var Profile = {
       destroy: destroy,
       get: get,
-      update: update
+      update: update,
+      all: all,
     };
 
     return Profile;
@@ -62,6 +63,16 @@
     */
     function update(profile) {
       return $http.put('/api/v1/accounts/' + profile.username + '/', profile);
+    }
+
+    /**
+    * @name all
+    * @desc Get all Profiles
+    * @returns {Promise}
+    * @memberOf thinkster.profiles.services.Profile
+    */
+    function all() {
+      return $http.get('/api/v1/accounts/');
     }
   }
 })();

@@ -9,16 +9,17 @@
         .module('thinkster.layout.controllers')
         .controller('IndexController', IndexController);
 
-    IndexController.$inject = ['$scope', 'Authentication', 'Posts', 'Snackbar'];
+    IndexController.$inject = ['$scope', 'Authentication', 'Posts', 'Snackbar', 'Profile'];
 
     /**
     * @namespace IndexController
     */
-    function IndexController($scope, Authentication, Posts, Snackbar) {
+    function IndexController($scope, Authentication, Posts, Snackbar, Profile) {
         var vm = this;
 
         vm.isAuthenticated = Authentication.isAuthenticated();
         vm.posts = [];
+        vm.accounts = [];
 
         activate();
 
@@ -52,6 +53,16 @@
             * @desc Show snackbar with error
             */
             function postsErrorFn(data, status, headers, config) {
+                Snackbar.error(data.error);
+            }
+
+            Profile.all().then(accountsSuccessFn, accountsErrorFn);
+
+            function accountsSuccessFn(data, status, headers, config) {
+                vm.accounts = data.data;
+            }
+
+            function accountsErrorFn(data, status, headers, config) {
                 Snackbar.error(data.error);
             }
         }
