@@ -9,15 +9,16 @@
     .module('thinkster.profiles.controllers')
     .controller('ProfileController', ProfileController);
 
-  ProfileController.$inject = ['$location', '$routeParams', 'Posts', 'Profile', 'Snackbar'];
+  ProfileController.$inject = ['$location', '$routeParams', 'Posts', 'Profile', 'Direction','Snackbar'];
 
   /**
   * @namespace ProfileController
   */
-  function ProfileController($location, $routeParams, Posts, Profile, Snackbar) {
+  function ProfileController($location, $routeParams, Posts, Profile, Direction, Snackbar) {
     var vm = this;
 
     vm.profile = undefined;
+    vm.direction = undefined;
     vm.posts = [];
     //vm.profiles = [];
 
@@ -33,6 +34,7 @@
 
       Profile.get(username).then(profileSuccessFn, profileErrorFn);
       Posts.get(username).then(postsSuccessFn, postsErrorFn);
+      //Direction.get(username).then(directionSuccessFn, directionErrorFn);
       //Profile.all().then(profilesSuccessFn, profilesErrorFn);
 
       /**
@@ -67,6 +69,23 @@
         * @desc Show error snackbar
         */
       function postsErrorFn(data, status, headers, config) {
+        Snackbar.error(data.data.error);
+      }
+
+      /**
+      * @name profileSuccessProfile
+      * @desc Update `profile` on viewmodel
+      */
+      function directionSuccessFn(data, status, headers, config) {
+        vm.direction = data.data;console.log(vm.direction);
+      }
+
+
+      /**
+      * @name profileErrorFn
+      * @desc Redirect to index and show error Snackbar
+      */
+      function directionErrorFn(data, status, headers, config) {console.log('Not Dir');
         Snackbar.error(data.data.error);
       }
 

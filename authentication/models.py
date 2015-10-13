@@ -3,6 +3,22 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager
 
 
+class Direction(models.Model):
+    name = models.CharField(u'Direction', max_length=200)
+
+    def __unicode__(self):
+        return u'%s' % (self.name)
+
+    def get_absolute_url(self):
+        #from django.core.urlresolvers import reverse
+        #return reverse('lab.views.direction', str(self.id))#)args=[self.name]
+        return "direction/%i/" % self.id
+
+    class Meta:
+        verbose_name = u"Direction"
+        verbose_name_plural = u"Direction"
+
+
 class AccountManager(BaseUserManager):
     def create_user(self, email, password=None, **kwargs):
         if not email:
@@ -32,6 +48,8 @@ class AccountManager(BaseUserManager):
 class Account(AbstractBaseUser):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=40, unique=True)
+
+    direction = models.ForeignKey(Direction, verbose_name=u'Direction', null=True, blank=True)
 
     first_name = models.CharField(max_length=40, blank=True)
     last_name = models.CharField(max_length=40, blank=True)

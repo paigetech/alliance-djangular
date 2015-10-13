@@ -7,9 +7,37 @@ from rest_framework import permissions, viewsets
 from rest_framework import status, views
 from rest_framework.response import Response
 
-from authentication.models import Account
+from authentication.models import Account, Direction
 from authentication.permissions import IsAccountOwner
-from authentication.serializers import AccountSerializer
+from authentication.serializers import AccountSerializer, DirectionSerializer
+
+
+class DirectionViewSet(viewsets.ModelViewSet):
+    # lookup_field = 'name'
+    queryset = Direction.objects.all()
+    serializer_class = DirectionSerializer
+
+    # def get_permissions(self):
+    #     if self.request.method in permissions.SAFE_METHODS:
+    #         return (permissions.AllowAny(),)
+    #
+    #     if self.request.method == 'POST':
+    #         return (permissions.AllowAny(),)
+    #
+    #     return (permissions.IsAuthenticated(), IsAccountOwner(),)
+
+    def create(self, request):
+        serializer = self.serializer_class(data=request.data)
+
+        if serializer.is_valid():
+            Direction.objects.create(**serializer.validated_data)
+
+            return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
+
+        return Response({
+            'status': 'Bad request',
+            'message': 'Direction could not be created with received data.'
+        }, status=status.HTTP_400_BAD_REQUEST)
 
 
 class AccountViewSet(viewsets.ModelViewSet):

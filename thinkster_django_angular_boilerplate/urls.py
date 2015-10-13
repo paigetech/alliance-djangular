@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url, include
 from rest_framework_nested import routers
 
-from authentication.views import AccountViewSet, LoginView, LogoutView
+from authentication.views import AccountViewSet, LoginView, LogoutView, DirectionViewSet
 from thinkster_django_angular_boilerplate.views import IndexView
 from posts.views import AccountPostsViewSet, PostViewSet
 
@@ -12,6 +12,7 @@ accounts_router = routers.NestedSimpleRouter(
     router, r'accounts', lookup='account'
 )
 accounts_router.register(r'posts', AccountPostsViewSet)
+router.register(r'directions', DirectionViewSet)
 
 
 urlpatterns = patterns(
@@ -21,6 +22,7 @@ urlpatterns = patterns(
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
 
-    url('^.*$', IndexView.as_view(), name='index'),
+    # url('^.*$', IndexView.as_view(), name='index'),
+    url('^$', IndexView.as_view(), name='index'),
 
 )
