@@ -13,8 +13,9 @@ class DirectionSerializer(serializers.ModelSerializer):
         fields = ('id', 'name')
         # read_only_fields = ('created_at', 'updated_at',)
 
-        def create(self, validated_data):
-            return Direction.objects.create(**validated_data)
+    def create(self, validated_data):
+        print validated_data
+        return Direction.objects.create(**validated_data)
 
 
 class AccountSerializer(serializers.ModelSerializer):
@@ -29,34 +30,41 @@ class AccountSerializer(serializers.ModelSerializer):
                   'confirm_password',)
         read_only_fields = ('created_at', 'updated_at',)
 
-        def create(self, validated_data):
-            direction_data = validated_data.pop('direction')
-            account = Account.objects.create(**validated_data)
-            Direction.objects.create(account=account, **direction_data)
-            return account
+    def create(self, validated_data):
+        direction_data = validated_data.pop('direction')
+        account = Account.objects.create(**validated_data)
+        Direction.objects.create(account=account, **direction_data)
+        return account
 
-        def update(self, instance, validated_data):
-            print "Here"
-            direction_data = validated_data.pop('direction')
+    def update(self, instance, validated_data):
+        direction_data = validated_data.pop('direction')
 
-            direction = instance.direction
+        direction_name = direction_data.get('name', instance.direction)
 
-            instance.username = validated_data.get('username', instance.username)
-            instance.tagline = validated_data.get('tagline', instance.tagline)
+        if direction_name:
+            dir = Direction.objects.get_or_create(name=direction_name)
 
+        if not instance.direction:
+            instance.direction = dir[0]
+        direction = instance.direction
+
+        print direction.id
+
+        instance.username = validated_data.get('username', instance.username)
+        instance.tagline = validated_data.get('tagline', instance.tagline)
+
+        instance.save()
+
+        direction.name = direction_data.get('name', direction.name)
+        direction.save()
+
+        password = validated_data.get('password', None)
+        confirm_password = validated_data.get('confirm_password', None)
+
+        if password and confirm_password and password == confirm_password:
+            instance.set_password(password)
             instance.save()
 
-            direction.name = direction_data.get('name', direction.name)
+        update_session_auth_hash(self.context.get('request'), instance)
 
-            # print direction.name
-
-            password = validated_data.get('password', None)
-            confirm_password = validated_data.get('confirm_password', None)
-
-            if password and confirm_password and password == confirm_password:
-                instance.set_password(password)
-                instance.save()
-
-            update_session_auth_hash(self.context.get('request'), instance)
-
-            return instance
+        return instance

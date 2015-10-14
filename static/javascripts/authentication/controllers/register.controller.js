@@ -37,11 +37,12 @@
     * @returns {Promise}
     * @memberOf thinkster.authentication.services.Authentication
     */
-    function register(email, password, username) {
+    function register(email, password, username, direction) {
       return $http.post('/api/v1/accounts/', {
         username: vm.username,
         password: vm.password,
-        email: vm.email
+        email: vm.email,
+        direction: vm.direction
       }).then(registerSuccessFn, registerErrorFn);
 
       /**
