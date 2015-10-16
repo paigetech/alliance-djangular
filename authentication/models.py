@@ -4,7 +4,7 @@ from django.contrib.auth.models import BaseUserManager
 
 
 class Direction(models.Model):
-    name = models.CharField(u'Direction', max_length=200)
+    name = models.CharField(u'Direction', max_length=200,)
 
     def __unicode__(self):
         return u'%s' % (self.name)
@@ -21,14 +21,21 @@ class Direction(models.Model):
 
 class AccountManager(BaseUserManager):
     def create_user(self, email, password=None, **kwargs):
+        if not isinstance(kwargs['direction'], Direction):
+            direction_name =  kwargs.pop('direction')['name']
+            direction = Direction.objects.get(name=direction_name)
+            kwargs.update({'direction': direction})
         if not email:
             raise ValueError('Users must have a valid email address.')
 
         if not kwargs.get('username'):
             raise ValueError('Users must have a valid username.')
 
+        if not kwargs.get('direction'):
+            raise ValueError('Users must have a valid direction.')
+
         account = self.model(
-            email=self.normalize_email(email), username=kwargs.get('username')
+            email=self.normalize_email(email), username=kwargs.get('username'), direction=kwargs.get('direction'),
         )
 
         account.set_password(password)
@@ -49,7 +56,7 @@ class Account(AbstractBaseUser):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=40, unique=True)
 
-    direction = models.ForeignKey(Direction, verbose_name=u'Direction', null=True, blank=True)
+    direction = models.ForeignKey(Direction, verbose_name=u'Direction', default=1)
 
     first_name = models.CharField(max_length=40, blank=True)
     last_name = models.CharField(max_length=40, blank=True)

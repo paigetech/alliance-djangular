@@ -31,4 +31,22 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
+        migrations.CreateModel(
+            name='Direction',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=200, verbose_name='Direction')),
+            ],
+            options={
+                'verbose_name': 'Direction',
+                'verbose_name_plural': 'Direction',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='account',
+            name='direction',
+            field=models.ForeignKey(default=1, verbose_name='Direction', to='authentication.Direction'),
+            preserve_default=True,
+        ),
     ]

@@ -56,16 +56,23 @@ class AccountViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
-
+        direction_name = request.data.pop('direction')
+        direction = Direction.objects.get_or_create(name=direction_name)[0]
+        direction_serializer=DirectionSerializer(direction)
+        print direction_serializer.data
+        request.data.update({'direction':direction_serializer.data})
         if serializer.is_valid():
             Account.objects.create_user(**serializer.validated_data)
-
+            print "val",serializer.validated_data
             return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
-
+        print "errors",serializer.errors
         return Response({
             'status': 'Bad request',
             'message': 'Account could not be created with received data.'
         }, status=status.HTTP_400_BAD_REQUEST)
+
+    # def update(self, request, *args, **kwargs):
+    #     print request.data
 
 
 class LoginView(views.APIView):
@@ -74,7 +81,7 @@ class LoginView(views.APIView):
 
         email = data.get('email', None)
         password = data.get('password', None)
-
+        print request.data
         account = authenticate(email=email, password=password)
 
         if account is not None:
@@ -82,7 +89,7 @@ class LoginView(views.APIView):
                 login(request, account)
 
                 serialized = AccountSerializer(account)
-
+                print serialized.data
                 return Response(serialized.data)
             else:
                 return Response({
