@@ -9,18 +9,18 @@
     .module('thinkster.profiles.controllers')
     .controller('ProfileController', ProfileController);
 
-  ProfileController.$inject = ['$location', '$routeParams', 'Posts', 'Profile', 'Direction','Snackbar'];
+  ProfileController.$inject = ['$location', '$routeParams', 'Posts', 'Profile', 'Equipment','Snackbar'];
 
   /**
   * @namespace ProfileController
   */
-  function ProfileController($location, $routeParams, Posts, Profile, Direction, Snackbar) {
+  function ProfileController($location, $routeParams, Posts, Profile, Equipment, Snackbar) {
     var vm = this;
 
     vm.profile = undefined;
     vm.direction = undefined;
     vm.posts = [];
-    //vm.profiles = [];
+    vm.equips = [];
 
     activate();
 
@@ -34,7 +34,7 @@
 
       Profile.get(username).then(profileSuccessFn, profileErrorFn);
       Posts.get(username).then(postsSuccessFn, postsErrorFn);
-      //Direction.get(username).then(directionSuccessFn, directionErrorFn);
+      Equipment.get(username).then(equipmentSuccessFn, equipmentErrorFn);
       //Profile.all().then(profilesSuccessFn, profilesErrorFn);
 
       /**
@@ -76,8 +76,8 @@
       * @name profileSuccessProfile
       * @desc Update `profile` on viewmodel
       */
-      function directionSuccessFn(data, status, headers, config) {
-        vm.direction = data.data;console.log(vm.direction);
+      function equipmentSuccessFn(data, status, headers, config) {
+        vm.equips = data.data;
       }
 
 
@@ -85,7 +85,7 @@
       * @name profileErrorFn
       * @desc Redirect to index and show error Snackbar
       */
-      function directionErrorFn(data, status, headers, config) {console.log('Not Dir');
+      function equipmentErrorFn(data, status, headers, config) {
         Snackbar.error(data.data.error);
       }
 

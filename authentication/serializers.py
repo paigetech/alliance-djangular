@@ -2,7 +2,7 @@ from django.contrib.auth import update_session_auth_hash
 
 from rest_framework import serializers
 
-from authentication.models import Account, Direction
+from authentication.models import Account, Direction, Equipment
 
 
 class PrimaryKeyNestedMixin(serializers.RelatedField, serializers.ModelSerializer):
@@ -64,3 +64,18 @@ class AccountSerializer(serializers.ModelSerializer):
         update_session_auth_hash(self.context.get('request'), instance)
 
         return instance
+    
+    
+class EquipmentSerializer(serializers.ModelSerializer):
+    lab = AccountSerializer(read_only=True, required=False)
+
+    class Meta:
+        model = Equipment
+
+        fields = ('id', 'lab', 'name',)
+        read_only_fields = ('id',)
+
+    def get_validation_exclusions(self, *args, **kwargs):
+        exclusions = super(EquipmentSerializer, self).get_validation_exclusions()
+
+        return exclusions + ['lab']

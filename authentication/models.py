@@ -82,3 +82,21 @@ class Account(AbstractBaseUser):
 
     def get_short_name(self):
         return self.first_name
+
+
+class Equipment(models.Model):
+    lab = models.ForeignKey(Account)
+    name = models.CharField(u'Equipment', max_length=200,)
+
+    def __unicode__(self):
+        return u'%s' % (self.name)
+
+    def get_absolute_url(self):
+        #from django.core.urlresolvers import reverse
+        #return reverse('lab.views.direction', str(self.id))#)args=[self.name]
+        return "equipment/%i/" % self.id
+
+    class Meta:
+        verbose_name = u"Equipment"
+        verbose_name_plural = u"Equipment"
+
