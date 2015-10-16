@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='account',
             name='direction',
-            field=models.ForeignKey(default=1, verbose_name='Direction', to='authentication.Direction'),
+            field=models.ForeignKey(verbose_name='Direction', to='authentication.Direction', null=True),
             preserve_default=True,
         ),
     ]

@@ -21,10 +21,7 @@ class Direction(models.Model):
 
 class AccountManager(BaseUserManager):
     def create_user(self, email, password=None, **kwargs):
-        if not isinstance(kwargs['direction'], Direction):
-            direction_name =  kwargs.pop('direction')['name']
-            direction = Direction.objects.get(name=direction_name)
-            kwargs.update({'direction': direction})
+        print "create user", kwargs
         if not email:
             raise ValueError('Users must have a valid email address.')
 
@@ -33,6 +30,10 @@ class AccountManager(BaseUserManager):
 
         if not kwargs.get('direction'):
             raise ValueError('Users must have a valid direction.')
+
+        if not isinstance(kwargs['direction'], Direction):
+            direction_name = kwargs['direction']['name']
+            kwargs['direction'] = Direction.objects.get(name=direction_name)
 
         account = self.model(
             email=self.normalize_email(email), username=kwargs.get('username'), direction=kwargs.get('direction'),
@@ -44,6 +45,7 @@ class AccountManager(BaseUserManager):
         return account
 
     def create_superuser(self, email, password, **kwargs):
+        kwargs['direction'] = Direction.objects.create(name='Space Research')
         account = self.create_user(email, password, **kwargs)
 
         account.is_admin = True
@@ -56,7 +58,7 @@ class Account(AbstractBaseUser):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=40, unique=True)
 
-    direction = models.ForeignKey(Direction, verbose_name=u'Direction', default=1)
+    direction = models.ForeignKey(Direction, verbose_name=u'Direction', null=True)
 
     first_name = models.CharField(max_length=40, blank=True)
     last_name = models.CharField(max_length=40, blank=True)
