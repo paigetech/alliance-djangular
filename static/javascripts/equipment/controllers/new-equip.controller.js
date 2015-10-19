@@ -26,7 +26,7 @@
     */
     function submit() {
       $rootScope.$broadcast('equipment.added', {
-        content: vm.content,
+        equip: vm.equip,
         lab: {
           username: Authentication.getAuthenticatedAccount().username
         }
@@ -34,7 +34,7 @@
 
       $scope.closeThisDialog();
 
-      Equipment.create(vm.content).then(createEquipmentSuccessFn, createEquipmentErrorFn);
+      Equipment.create(vm.equip).then(createEquipmentSuccessFn, createEquipmentErrorFn);
 
 
       /**

@@ -2,8 +2,13 @@
   <div class="jumbotron profile__header">
     <h1 class="profile__username">+{{ vm.profile.username }}</h1>
     <p class="profile__tagline">{{ vm.profile.tagline }}</p>
+      <h2>Direction</h2>
     <p class="profile__direction__name">{{ vm.profile.direction.name }}</p>
+      <h2>Equipment</h2>
+      <ul  class="list-inline">
+          <a href="equipment/{{ eq.id }}"><li ng-repeat="eq in vm.equips" style="display: inline-block">{{ eq.name }} {{ it.fields.name }} {{ $last ? '.' : ($index==vm.equips.length-2) ? ' and  ' : ', '}}</li></a>
+      </ul>
   </div>
-
+<equips equips="vm.equips"></equips>
   <posts posts="vm.posts"></posts>
 </div>

@@ -16,7 +16,7 @@
     /**
     * @name directive
     * @desc The directive to be returned
-    * @memberOf thinkster.posts.directives.Profile
+    * @memberOf thinkster.profiles.directives.Profile
     */
     var directive = {
       restrict: 'E',

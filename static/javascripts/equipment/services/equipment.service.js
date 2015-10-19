@@ -9,7 +9,7 @@
         .module('thinkster.equipment.services')
         .factory('Equipment', Equipment);
 
-    Posts.$inject = ['$http'];
+    Equipment.$inject = ['$http'];
 
     /**
     * @namespace Equipment
@@ -17,14 +17,27 @@
     */
     function Equipment($http) {
         var Equipment = {
+            destroy: destroy,
             all: all,
             create: create,
-            get: get
+            get: get,
+            get_obj: get_obj
         };
 
         return Equipment;
 
     ////////////////////
+
+    /**
+    * @name destroy
+    * @desc Destroys the given equipment
+    * @param {Object} equipment The equipment to be destroyed
+    * @returns {Promise}
+    * @memberOf thinkster.equipment.services.Equipment
+    */
+    function destroy(equipment) {
+      return $http.delete('/api/v1/equipment/' + equipment.id + '/');
+    }
 
     /**
     * @name all
@@ -43,9 +56,9 @@
     * @returns {Promise}
     * @memberOf thinkster.equipment.services.Equipment
     */
-    function create(content) {
+    function create(equipment) {
         return $http.post('/api/v1/equipment/', {
-            content: content
+            equipment: equipment
         });
     }
 
@@ -57,7 +70,12 @@
      * @memberOf thinkster.equipment.services.Equipment
      */
     function get(username) {
-        return $http.get('/api/v1/equipment/' + username + '/equipment/');
+        return $http.get('/api/v1/accounts/' + username + '/equipment/');
+        }
+
+
+    function get_obj(id) {
+        return $http.get('/api/v1/equipment/' + id + '/');
         }
     }
 })();

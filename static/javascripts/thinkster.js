@@ -13,7 +13,8 @@
             'thinkster.posts',
             'thinkster.utils',
             'thinkster.profiles',
-            'thinkster.directions'
+            'thinkster.directions',
+            'thinkster.equipment'
         ]);
 
      angular

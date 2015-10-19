@@ -33,6 +33,10 @@
             controller: 'ProfileSettingsController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/profiles/settings.html'
+        }).when('/equipment/:equip', {
+            controller: 'EquipmentController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/equipment/equip.html'
         })//.otherwise('/');
     }
 })();

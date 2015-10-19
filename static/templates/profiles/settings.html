@@ -31,6 +31,18 @@
         <input type="text" class="form-control" id="settings__direction" ng-model="vm.profile.direction.name" placeholder="ex. Space Research." />
       </div>
 
+        <hr>
+
+        <div class="form-group">
+            <label for="settings__equipment">Equipment</label>
+            <div>
+                <ul ng-model="vm.equips" ng-repeat="eq in vm.equips" class="list-inline"><li style="display: inline-block">{{ eq.name }}</li></ul>
+            </div>
+<equips equips="vm.equips"></equips>
+        </div>
+
+        <hr>
+
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="button" class="btn btn-danger pull-right" ng-click="vm.destroy()">Delete Account</button>

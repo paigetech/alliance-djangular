@@ -31,11 +31,13 @@
     */
     function activate() {
       var username = $routeParams.username.substr(1);
+      var item_id = $routeParams.equip; console.log(item_id);//.substr(1);
 
       Profile.get(username).then(profileSuccessFn, profileErrorFn);
       Posts.get(username).then(postsSuccessFn, postsErrorFn);
       Equipment.get(username).then(equipmentSuccessFn, equipmentErrorFn);
       //Profile.all().then(profilesSuccessFn, profilesErrorFn);
+      Equipment.get_obj(item_id).then(equipSuccessFn, equipErrorFn);
 
       /**
       * @name profileSuccessProfile
@@ -86,6 +88,23 @@
       * @desc Redirect to index and show error Snackbar
       */
       function equipmentErrorFn(data, status, headers, config) {
+        Snackbar.error(data.data.error);
+      }
+
+      /**
+      * @name profileSuccessProfile
+      * @desc Update `profile` on viewmodel
+      */
+      function equipSuccessFn(data, status, headers, config) {
+        vm.equip = data.data;
+      }
+
+
+      /**
+      * @name profileErrorFn
+      * @desc Redirect to index and show error Snackbar
+      */
+      function equipErrorFn(data, status, headers, config) {
         Snackbar.error(data.data.error);
       }
 

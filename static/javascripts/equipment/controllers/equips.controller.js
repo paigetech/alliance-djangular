@@ -1,82 +1,58 @@
 /**
-* ProfileController
-* @namespace thinkster.profiles.controllers
+* EquipmentsController
+* @namespace thinkster.equipment.controllers
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.profiles.controllers')
-    .controller('ProfilesController', ProfilesController);
+    .module('thinkster.equipment.controllers')
+    .controller('EquipmentsController', EquipmentsController);
 
-  ProfilesController.$inject = ['$location', '$routeParams','$http', 'Profile', 'Equipment','Snackbar'];
+  EquipmentsController.$inject = ['$location', '$routeParams','$http', 'Equipment','Snackbar'];
 
   /**
-  * @namespace ProfileController
+  * @namespace EquipmentsController
   */
-  function ProfilesController($location, $routeParams,$http, Profiles, Equipment, Snackbar) {
+  function EquipmentsController($location, $routeParams, $http, Equipment, Snackbar) {
     var vm = this;
 
 
     //vm.profilesall = undefined;
     //vm.profiles = [];
-      vm.profiles= undefined;
-    //vm.equips=[]
+      vm.equips= undefined;
 
     activate();
 
     /**
     * @name activate
     * @desc Actions to be performed when this controller is instantiated
-    * @memberOf thinkster.profiles.controllers.ProfileController
+    * @memberOf thinkster.equipment.controllers.EquipmentsController
     */
     function activate() {
-      //var username = $routeParams.username.substr(1);
-      console.log($location.url());
-      console.log($location.path());
-      console.log($location.search());
-      console.log($routeParams.username);
-        Profiles.all().then(profilesSuccessFn, profilesErrorFn);
-      //Equipment.get("qq").then(equipmentSuccessFn, equipmentErrorFn);
+        Equipment.all().then(equipmentSuccessFn, equipmentErrorFn);
 
         /**
-      * @name profilesSuccessProfile
-      * @desc Update `profile` on viewmodel
-      */
-      function profilesSuccessFn(data, status, headers, config) {
-        vm.profiles = data.data;
-      }
-
-
-      /**
-      * @name profilesErrorFn
-      * @desc Redirect to index and show error Snackbar
-      */
-      function profilesErrorFn(data, status, headers, config) {
-
-        Snackbar.error('That user does not exist.');
-      }
-
-        function all() {
-      return $http.get('/api/v1/accounts/');
-    }
-
-      /**
-      * @name profileSuccessProfile
-      * @desc Update `profile` on viewmodel
+      * @name equipmentSuccessProfile
+      * @desc Update `equipment` on viewmodel
       */
       function equipmentSuccessFn(data, status, headers, config) {
-        vm.equips = data.data;console.log(vm.equips);
+        vm.equips = data.data;
       }
 
 
       /**
-      * @name profileErrorFn
+      * @name equipmentErrorFn
       * @desc Redirect to index and show error Snackbar
       */
       function equipmentErrorFn(data, status, headers, config) {
-        Snackbar.error(data.data.error);
+
+        Snackbar.error('That equipment does not exist.');
       }
+
+      //function all() {
+      //  return $http.get('/api/v1/equipment/');
+      //}
         //vm.profiles = Profile.all();console.log( vm.profiles.data);
         //vm.profiles = $http.get('/api/v1/accounts/');console.log( vm.profiles);
         //for (var i = 0; i < profilesall.length; ++i) {
