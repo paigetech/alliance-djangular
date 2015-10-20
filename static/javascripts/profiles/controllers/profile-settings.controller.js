@@ -9,14 +9,14 @@
     .module('thinkster.profiles.controllers')
     .controller('ProfileSettingsController', ProfileSettingsController);
 
-  ProfileSettingsController.$inject = [
+  ProfileSettingsController.$inject = ['$parse',
     '$location', '$routeParams', 'Authentication', 'Profile', 'Snackbar'
   ];
 
   /**
   * @namespace ProfileSettingsController
   */
-  function ProfileSettingsController($location, $routeParams, Authentication, Profile, Snackbar) {
+  function ProfileSettingsController($parse, $location, $routeParams, Authentication, Profile, Snackbar) {
     var vm = this;
 
     vm.destroy = destroy;
@@ -54,6 +54,7 @@
       */
       function profileSuccessFn(data, status, headers, config) {
         vm.profile = data.data;
+        vm.profile.get_equipment_array = $parse(vm.profile.get_equipment)(vm);
       }
 
       /**

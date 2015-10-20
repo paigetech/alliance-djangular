@@ -5,8 +5,8 @@
       <h2>Direction</h2>
     <p class="profile__direction__name">{{ vm.profile.direction.name }}</p>
       <h2>Equipment</h2>
-      <ul  class="list-inline">
-          <a href="equipment/{{ eq.id }}"><li ng-repeat="eq in vm.equips" style="display: inline-block">{{ eq.name }} {{ it.fields.name }} {{ $last ? '.' : ($index==vm.equips.length-2) ? ' and  ' : ', '}}</li></a>
+      <ul   class="list-inline">
+          <li  ng-repeat="equip in vm.equips" style="display: inline-block"><a href="equipment/{{ equip.id }}">{{ equip.name }} </a> {{ $last ? '.' : ($index==vm.equips.length-2) ? ' and  ' : ', '}}</li>
       </ul>
   </div>
 <equips equips="vm.equips"></equips>

@@ -33,12 +33,18 @@
 
         <hr>
 
-        <div class="form-group">
+        <div class="form-group" >
             <label for="settings__equipment">Equipment</label>
-            <div>
-                <ul ng-model="vm.equips" ng-repeat="eq in vm.equips" class="list-inline"><li style="display: inline-block">{{ eq.name }}</li></ul>
-            </div>
-<equips equips="vm.equips"></equips>
+            <table class="table table-striped table-hover ">
+                <tbody>
+                <tr ng-repeat="eq in vm.profile.get_equipment_array" id="settings__equipment__id{{ eq.pk }}" ng-model="eq.fields.name">
+                    <td>{{ eq.fields.name }}</td>
+                    <td><button class="remove" ng-click="removeItem('{{ eq }}')"><i class="mdi-action-delete"></i></button></td>
+                </tr>
+                </tbody>
+            </table>
+            <button type="button" class="add_equip_item" ng-click="addItem()"><i class="mdi-content-add"></i></button>
+            <button type="button" class="btn btn-success" ng-click="addItem()">Add Item</button>
         </div>
 
         <hr>
@@ -48,5 +54,6 @@
         <button type="button" class="btn btn-danger pull-right" ng-click="vm.destroy()">Delete Account</button>
       </div>
     </form>
+
   </div>
 </div>

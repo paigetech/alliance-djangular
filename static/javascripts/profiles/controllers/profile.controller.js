@@ -37,7 +37,9 @@
       Posts.get(username).then(postsSuccessFn, postsErrorFn);
       Equipment.get(username).then(equipmentSuccessFn, equipmentErrorFn);
       //Profile.all().then(profilesSuccessFn, profilesErrorFn);
-      Equipment.get_obj(item_id).then(equipSuccessFn, equipErrorFn);
+      if (item_id) {
+        Equipment.get_obj(item_id).then(equipSuccessFn, equipErrorFn);
+      }
 
       /**
       * @name profileSuccessProfile
