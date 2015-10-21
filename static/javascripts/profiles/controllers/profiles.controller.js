@@ -23,6 +23,7 @@
       vm.profiles= undefined;
     //vm.equips=[]
 
+
     activate();
 
     /**
@@ -31,11 +32,6 @@
     * @memberOf thinkster.profiles.controllers.ProfileController
     */
     function activate() {
-      //var username = $routeParams.username.substr(1);
-      console.log($location.url());
-      console.log($location.path());
-      console.log($location.search());
-      console.log($routeParams.username);
         Profiles.all().then(profilesSuccessFn, profilesErrorFn);
       //Equipment.get("qq").then(equipmentSuccessFn, equipmentErrorFn);
 

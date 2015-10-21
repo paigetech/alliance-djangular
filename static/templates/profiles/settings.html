@@ -39,12 +39,14 @@
                 <tbody>
                 <tr ng-repeat="eq in vm.profile.get_equipment_array" id="settings__equipment__id{{ eq.pk }}" ng-model="eq.fields.name">
                     <td>{{ eq.fields.name }}</td>
-                    <td><button class="remove" ng-click="removeItem('{{ eq }}')"><i class="mdi-action-delete"></i></button></td>
+                    <td><a href="javascript:void(0)"  ng-click="vm.destroyEquip(eq.pk)"><i class="mdi-action-delete"></i></a></td>
                 </tr>
                 </tbody>
             </table>
-            <button type="button" class="add_equip_item" ng-click="addItem()"><i class="mdi-content-add"></i></button>
-            <button type="button" class="btn btn-success" ng-click="addItem()">Add Item</button>
+            <a class="btn btn-xs btn-info btn-fab btn-raised mdi-content-add btn-add-new-equip "
+              href="javascript:void(0)"
+              ng-dialog="/static/templates/equipment/new-equip.html"
+              ng-dialog-controller="NewEquipmentController as vm"></a>
         </div>
 
         <hr>

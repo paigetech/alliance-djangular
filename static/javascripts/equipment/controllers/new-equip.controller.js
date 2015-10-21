@@ -9,12 +9,12 @@
     .module('thinkster.equipment.controllers')
     .controller('NewEquipmentController', NewEquipmentController);
 
-  NewPostController.$inject = ['$rootScope', '$scope', 'Authentication', 'Snackbar', 'Equipment'];
+  NewEquipmentController.$inject = ['$rootScope', '$scope', '$route', 'Authentication', 'Snackbar', 'Equipment'];
 
   /**
   * @namespace NewEquipmentController
   */
-  function NewEquipmentController($rootScope, $scope, Authentication, Snackbar, Equipment) {
+  function NewEquipmentController($rootScope, $scope, $route, Authentication, Snackbar, Equipment) {
     var vm = this;
 
     vm.submit = submit;
@@ -37,12 +37,14 @@
       Equipment.create(vm.equip).then(createEquipmentSuccessFn, createEquipmentErrorFn);
 
 
+
       /**
       * @name createEquipmentSuccessFn
       * @desc Show snackbar with success message
       */
       function createEquipmentSuccessFn(data, status, headers, config) {
         Snackbar.show('Success! Equipment added.');
+        $route.reload();
       }
 
       /**

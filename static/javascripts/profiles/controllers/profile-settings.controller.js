@@ -9,18 +9,19 @@
     .module('thinkster.profiles.controllers')
     .controller('ProfileSettingsController', ProfileSettingsController);
 
-  ProfileSettingsController.$inject = ['$parse',
-    '$location', '$routeParams', 'Authentication', 'Profile', 'Snackbar'
+  ProfileSettingsController.$inject = [
+    '$parse', '$location', '$routeParams', 'Authentication', 'Profile', 'Snackbar', 'Equipment', '$route'
   ];
 
   /**
   * @namespace ProfileSettingsController
   */
-  function ProfileSettingsController($parse, $location, $routeParams, Authentication, Profile, Snackbar) {
+  function ProfileSettingsController($parse, $location, $routeParams, Authentication, Profile, Snackbar, Equipment, $route) {
     var vm = this;
 
     vm.destroy = destroy;
     vm.update = update;
+    vm.destroyEquip = destroyEquip;
 
     activate();
 
@@ -119,6 +120,23 @@
       * @desc Show error snackbar
       */
       function profileErrorFn(data, status, headers, config) {
+        Snackbar.error(data.error);
+      }
+    }
+
+    function destroyEquip(equip_id) {
+      Equipment.destroy(equip_id).then(equipSuccessFn, equipErrorFn);
+
+      /**
+       * @name profileSuccessFn
+       * @desc Redirect to index and display success snackbar
+       */
+      function equipSuccessFn(data, status, headers, config) {
+        $route.reload();
+        Snackbar.show('Equipment item has been deleted.');
+      }
+
+      function equipErrorFn(data, status, headers, config) {
         Snackbar.error(data.error);
       }
     }

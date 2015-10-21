@@ -36,7 +36,7 @@
     * @memberOf thinkster.equipment.services.Equipment
     */
     function destroy(equipment) {
-      return $http.delete('/api/v1/equipment/' + equipment.id + '/');
+      return $http.delete('/api/v1/equipment/' + equipment + '/');
     }
 
     /**
@@ -56,9 +56,9 @@
     * @returns {Promise}
     * @memberOf thinkster.equipment.services.Equipment
     */
-    function create(equipment) {
+    function create(name) {
         return $http.post('/api/v1/equipment/', {
-            equipment: equipment
+            name: name
         });
     }
 

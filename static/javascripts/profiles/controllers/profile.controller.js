@@ -31,7 +31,7 @@
     */
     function activate() {
       var username = $routeParams.username.substr(1);
-      var item_id = $routeParams.equip; console.log(item_id);//.substr(1);
+      var item_id = $routeParams.equip;
 
       Profile.get(username).then(profileSuccessFn, profileErrorFn);
       Posts.get(username).then(postsSuccessFn, postsErrorFn);

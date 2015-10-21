@@ -27,7 +27,7 @@
     * @desc Actions to be performed when this controller is instantiated
     * @memberOf thinkster.equipment.controllers.EquipmentController
     */
-    function activate() {console.log('EquipmentController');
+    function activate() {
       //var name = $routeParams.equipment.substr(1);
       var id = $routeParams.equip;
 
@@ -39,7 +39,7 @@
       * @desc Update `equipment` on viewmodel
       */
       function equipmentSuccessFn(data, status, headers, config) {
-        vm.equip = data.data;console.log(vm.equip);
+        vm.equip = data.data;
       }
 
 
@@ -47,7 +47,7 @@
       * @name equipmentErrorFn
       * @desc Redirect to index and show error Snackbar
       */
-      function equipmentErrorFn(data, status, headers, config) {console.log(id);
+      function equipmentErrorFn(data, status, headers, config) {
         Snackbar.error(data.data.error);
       }
 
