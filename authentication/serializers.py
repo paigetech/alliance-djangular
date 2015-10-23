@@ -23,18 +23,33 @@ class DirectionSerializer( serializers.ModelSerializer):
         fields = ('id', 'name')
         # read_only_fields = ('created_at', 'updated_at',)
 
+class EquipmentSerializer(serializers.ModelSerializer):
+    # lab = AccountSerializer(read_only=True, required=False)
+
+    class Meta:
+        model = Equipment
+
+        fields = ('id', 'lab', 'name',)
+        read_only_fields = ('id',)
+
+    def get_validation_exclusions(self, *args, **kwargs):
+        exclusions = super(EquipmentSerializer, self).get_validation_exclusions()
+
+        return exclusions + ['lab']
 
 class AccountSerializer(serializers.ModelSerializer):
     direction = DirectionSerializer()
     password = serializers.CharField(write_only=True, required=False)
     confirm_password = serializers.CharField(write_only=True, required=False)
+    equipment_set = EquipmentSerializer(many=True)
 
     class Meta:
         model = Account
-        fields = ('id', 'email', 'username', 'created_at', 'updated_at', 'direction',
+        fields = ('id', 'email', 'username', 'created_at', 'updated_at', 'direction', 'equipment_set',#'get_equip',
                   'first_name', 'last_name', 'tagline', 'password', 'get_equipment',
                   'confirm_password',)
         read_only_fields = ('created_at', 'updated_at',)
+
 
     def update(self, instance, validated_data):
         direction_data = validated_data.pop('direction')
@@ -66,16 +81,16 @@ class AccountSerializer(serializers.ModelSerializer):
         return instance
     
     
-class EquipmentSerializer(serializers.ModelSerializer):
-    lab = AccountSerializer(read_only=True, required=False)
-
-    class Meta:
-        model = Equipment
-
-        fields = ('id', 'lab', 'name',)
-        read_only_fields = ('id',)
-
-    def get_validation_exclusions(self, *args, **kwargs):
-        exclusions = super(EquipmentSerializer, self).get_validation_exclusions()
-
-        return exclusions + ['lab']
+# class EquipmentSerializer(serializers.ModelSerializer):
+#     # lab = AccountSerializer(read_only=True, required=False)
+#
+#     class Meta:
+#         model = Equipment
+#
+#         fields = ('id', 'lab', 'name',)
+#         read_only_fields = ('id',)
+#
+#     def get_validation_exclusions(self, *args, **kwargs):
+#         exclusions = super(EquipmentSerializer, self).get_validation_exclusions()
+#
+#         return exclusions + ['lab']

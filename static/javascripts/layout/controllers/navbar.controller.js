@@ -9,13 +9,15 @@
       .module('thinkster.layout.controllers')
       .controller('NavbarController', NavbarController);
 
-  NavbarController.$inject = ['$scope', 'Authentication'];
+  NavbarController.$inject = ['$rootScope','$scope', 'Authentication', 'FilterService' ];
 
   /**
   * @namespace NavbarController
   */
-  function NavbarController($scope, Authentication) {
+  function NavbarController($rootScope, $scope, Authentication, FilterService) {
       var vm = this;
+
+      $scope.FilterService = FilterService;
 
       vm.logout = logout;
 

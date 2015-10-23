@@ -9,20 +9,18 @@
     .module('thinkster.profiles.controllers')
     .controller('ProfilesController', ProfilesController);
 
-  ProfilesController.$inject = ['$location', '$routeParams','$http', 'Profile', 'Equipment','Snackbar'];
+  ProfilesController.$inject = ['$scope', '$rootScope','$location', '$routeParams','$http', 'Profile', 'Equipment','Snackbar', 'FilterService'
+    ];
 
   /**
   * @namespace ProfileController
   */
-  function ProfilesController($location, $routeParams,$http, Profiles, Equipment, Snackbar) {
+  function ProfilesController($scope, $rootScope, $location, $routeParams,$http, Profiles, Equipment, Snackbar, FilterService) {
     var vm = this;
 
+    $scope.FilterService = FilterService;
 
-    //vm.profilesall = undefined;
-    //vm.profiles = [];
-      vm.profiles= undefined;
-    //vm.equips=[]
-
+     vm.profiles= undefined;
 
     activate();
 
@@ -57,22 +55,22 @@
       return $http.get('/api/v1/accounts/');
     }
 
-      /**
-      * @name profileSuccessProfile
-      * @desc Update `profile` on viewmodel
-      */
-      function equipmentSuccessFn(data, status, headers, config) {
-        vm.equips = data.data;console.log(vm.equips);
-      }
-
-
-      /**
-      * @name profileErrorFn
-      * @desc Redirect to index and show error Snackbar
-      */
-      function equipmentErrorFn(data, status, headers, config) {
-        Snackbar.error(data.data.error);
-      }
+      ///**
+      //* @name profileSuccessProfile
+      //* @desc Update `profile` on viewmodel
+      //*/
+      //function equipmentSuccessFn(data, status, headers, config) {
+      //  vm.equips = data.data;console.log(vm.equips);
+      //}
+      //
+      //
+      ///**
+      //* @name profileErrorFn
+      //* @desc Redirect to index and show error Snackbar
+      //*/
+      //function equipmentErrorFn(data, status, headers, config) {
+      //  Snackbar.error(data.data.error);
+      //}
         //vm.profiles = Profile.all();console.log( vm.profiles.data);
         //vm.profiles = $http.get('/api/v1/accounts/');console.log( vm.profiles);
         //for (var i = 0; i < profilesall.length; ++i) {

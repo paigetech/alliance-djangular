@@ -39,7 +39,8 @@
     * @memberOf thinkster.profiles.services.Profile
     */
     function destroy(profile) {
-      return $http.delete('/api/v1/accounts/' + profile.id + '/');
+      //return $http.delete('/api/v1/accounts/' + profile.id + '/');
+      return $http.delete('/api/v1/accounts/' + profile + '/');
     }
 
 

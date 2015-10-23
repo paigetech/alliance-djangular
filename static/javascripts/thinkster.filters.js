@@ -2,32 +2,34 @@
     'use strict';
 
     angular
-        .module('thinkster.layout.filters')
+        .module('thinkster.filters')
         .filter('IndexFilter', IndexFilter);
 
     IndexFilter.$inject = ['$rootScope'];
 
-
-
     /**
-     * @namespace IndexController
+     * @namespace IndexFilter
      */
     function IndexFilter($rootScope) {
-        var vm = this;
-        $rootScope.theFilter = '';
-        vm.myFilter = $rootScope.theFilter;
 
-
-        return function( items, combo) {
+        return function(items, theFilter) {
             var filtered = [];
 
-            //console.log(items, combo);
+            angular.forEach(items, function(item) {
+                if (theFilter) {
+                    for(var attr in item) {//console.log(item[attr]);
+                        if( item[attr] ){console.log(typeof item[attr], attr);
+                        //    if(item[attr].indexOf(theFilter) > -1){
+                        //        filtered.push(item);
+                        //    }
+                        }
+                    }
 
-            angular.forEach(items, function(item) {console.log(item.username);
-
-                if(item.username == "qq"){
+                } else {
                     filtered.push(item);
                 }
+
+
             });
 
             return filtered;

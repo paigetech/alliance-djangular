@@ -56,9 +56,10 @@
     * @returns {Promise}
     * @memberOf thinkster.equipment.services.Equipment
     */
-    function create(name) {
+    function create(name, lab) {
         return $http.post('/api/v1/equipment/', {
-            name: name
+            name: name,
+            lab: lab
         });
     }
 

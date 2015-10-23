@@ -14,7 +14,8 @@
             'thinkster.utils',
             'thinkster.profiles',
             'thinkster.directions',
-            'thinkster.equipment'
+            'thinkster.equipment',
+            'thinkster.filters'
         ]);
 
      angular
@@ -22,6 +23,14 @@
 
     angular
       .module('thinkster.config', []);
+
+    angular
+      .module('thinkster.filters', []);
+
+    angular
+        .module('thinkster').service('FilterService', function() {
+      this.LabFilter = "";
+    });
 
     angular
         .module('thinkster')

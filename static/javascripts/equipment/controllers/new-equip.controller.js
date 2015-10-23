@@ -27,14 +27,15 @@
     function submit() {
       $rootScope.$broadcast('equipment.added', {
         equip: vm.equip,
-        lab: {
-          username: Authentication.getAuthenticatedAccount().username
-        }
+        lab: Authentication.getAuthenticatedAccount().id
+        //lab: {
+        //  username: Authentication.getAuthenticatedAccount().username
+        //}
       });
 
       $scope.closeThisDialog();
 
-      Equipment.create(vm.equip).then(createEquipmentSuccessFn, createEquipmentErrorFn);
+      Equipment.create(vm.equip, Authentication.getAuthenticatedAccount().id).then(createEquipmentSuccessFn, createEquipmentErrorFn);
 
 
 

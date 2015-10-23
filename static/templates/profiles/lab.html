@@ -11,11 +11,9 @@
             <h4>Direction</h4>
             <p>{{ profile.direction.name }}</p>
             <h4>Equipment</h4>
-            <div ng-init="equipment = $eval(profile.get_equipment)">
-                <ul class="list-inline">
-                    <li ng-repeat="it in equipment">{{ it.fields.name }} {{ $last ? '.' : ($index==equipment.length-2) ? ' and ' : ', '}}</li>
-                </ul>
-            </div>
+            <ul class="list-inline">
+                <li ng-repeat="it in profile.equipment_set">{{ it.name }} {{ $last ? '.' : ($index==profile.equipment_set.length-2) ? ' and ' : ', '}}</li>
+            </ul>
         </div>
       </div>
     </div>
