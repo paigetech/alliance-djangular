@@ -10,13 +10,13 @@
     .controller('ProfileSettingsController', ProfileSettingsController);
 
   ProfileSettingsController.$inject = [
-    '$parse', '$location', '$routeParams', 'Authentication', 'Profile', 'Snackbar', 'Equipment', '$route'
+    '$scope', '$location', '$routeParams', 'Authentication', 'Profile', 'Snackbar', 'Equipment', '$route', 'Direction'
   ];
 
   /**
   * @namespace ProfileSettingsController
   */
-  function ProfileSettingsController($parse, $location, $routeParams, Authentication, Profile, Snackbar, Equipment, $route) {
+  function ProfileSettingsController($scope, $location, $routeParams, Authentication, Profile, Snackbar, Equipment, $route, Direction) {
     var vm = this;
 
     vm.destroy = destroy;
@@ -48,6 +48,7 @@
       }
 
       Profile.get(username).then(profileSuccessFn, profileErrorFn);
+      Direction.all().then(directionSuccessFn, directionErrorFn);
 
       /**
       * @name profileSuccessFn
@@ -55,7 +56,7 @@
       */
       function profileSuccessFn(data, status, headers, config) {
         vm.profile = data.data;
-        vm.profile.get_equipment_array = $parse(vm.profile.get_equipment)(vm);
+        //vm.profile.get_equipment_array = $parse(vm.profile.get_equipment)(vm);
       }
 
       /**
@@ -66,6 +67,28 @@
         $location.url('/');
         Snackbar.error('That user does not exist.');
       }
+
+      /**
+      * @name directionSuccessFn
+      * @desc Update `direction` for view
+      */
+      function directionSuccessFn(data, status, headers, config) {
+        vm.directions = data.data;
+        $scope.dirs = Object.keys(vm.directions);
+        console.log($scope.dirs);
+        vm.prof = vm.profile;
+        var index = vm.directions.map(function(e) { return e.name; }).indexOf(vm.prof.direction.name);
+        vm.selectedDirection = vm.directions[index]
+
+      }
+
+      /**
+      * @name directionErrorFn
+      * @desc Display error snackbar
+      */
+      function directionErrorFn(data, status, headers, config) {
+        Snackbar.error(data.error);
+      }
     }
 
 
@@ -74,7 +97,7 @@
     * @desc Destroy this user's profile
     * @memberOf thinkster.profiles.controllers.ProfileSettingsController
     */
-    function destroy() {console.log(vm.profile.username);
+    function destroy() {
       Profile.destroy(vm.profile.username).then(profileSuccessFn, profileErrorFn);
 
       /**

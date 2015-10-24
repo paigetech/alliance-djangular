@@ -28,7 +28,11 @@
 
       <div class="form-group">
         <label for="settings__direction">Direction</label>
-        <input type="text" class="form-control" id="settings__direction" ng-model="vm.profile.direction.name" placeholder="ex. Space Research." />
+          <input type="text" class="form-control" id="settings__direction" ng-model="vm.profile.direction.name" placeholder="ex. Space Research." />
+          <select ng-model="vm.selectedDirection" ng-options="direction.name for direction in vm.directions"></select>
+
+        <input auto-complete ui-items="dirs" ng-model="selected">
+                selected = {{selected}}
       </div>
 
         <hr>
@@ -37,13 +41,13 @@
             <label for="settings__equipment">Equipment</label>
             <table class="table table-striped table-hover ">
                 <tbody>
-                <tr ng-repeat="eq in vm.profile.get_equipment_array" id="settings__equipment__id{{ eq.pk }}" ng-model="eq.fields.name">
-                    <td>{{ eq.fields.name }}</td>
-                    <td><a href="javascript:void(0)"  ng-click="vm.destroyEquip(eq.pk)"><i class="mdi-action-delete"></i></a></td>
+                <tr ng-repeat="eq in vm.profile.equipment_set" id="settings__equipment__id{{ eq.id }}" ng-model="eq.name">
+                    <td>{{ eq.name }}</td>
+                    <td><a href="javascript:void(0)"  ng-click="vm.destroyEquip(eq.id)"><i class="mdi-action-delete"></i></a></td>
                 </tr>
                 </tbody>
             </table>
-            <a class="btn btn-xs btn-info btn-fab btn-raised mdi-content-add btn-add-new-equip "
+            <a class="btn btn-info btn-fab btn-fab-mini btn-raised mdi-content-add btn-add-new-equip "
               href="javascript:void(0)"
               ng-dialog="/static/templates/equipment/new-equip.html"
               ng-dialog-controller="NewEquipmentController as vm"></a>
@@ -53,7 +57,7 @@
 
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
-        <button type="button" class="btn btn-danger pull-right" ng-click="vm.destroy()">Delete Account</button>
+        <button type="button" class="btn btn-danger" ng-click="vm.destroy()">Delete Account</button>
       </div>
     </form>
 

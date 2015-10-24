@@ -28,9 +28,6 @@
       $rootScope.$broadcast('equipment.added', {
         equip: vm.equip,
         lab: Authentication.getAuthenticatedAccount().id
-        //lab: {
-        //  username: Authentication.getAuthenticatedAccount().username
-        //}
       });
 
       $scope.closeThisDialog();

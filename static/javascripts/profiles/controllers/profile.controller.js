@@ -36,7 +36,7 @@
       Profile.get(username).then(profileSuccessFn, profileErrorFn);
       Posts.get(username).then(postsSuccessFn, postsErrorFn);
       Equipment.get(username).then(equipmentSuccessFn, equipmentErrorFn);
-      //Profile.all().then(profilesSuccessFn, profilesErrorFn);
+
       if (item_id) {
         Equipment.get_obj(item_id).then(equipSuccessFn, equipErrorFn);
       }
@@ -77,8 +77,8 @@
       }
 
       /**
-      * @name profileSuccessProfile
-      * @desc Update `profile` on viewmodel
+      * @name equipmentSuccessEquipment
+      * @desc Update `equipment` on viewmodel
       */
       function equipmentSuccessFn(data, status, headers, config) {
         vm.equips = data.data;
@@ -86,7 +86,7 @@
 
 
       /**
-      * @name profileErrorFn
+      * @name equipmentErrorFn
       * @desc Redirect to index and show error Snackbar
       */
       function equipmentErrorFn(data, status, headers, config) {
@@ -94,8 +94,8 @@
       }
 
       /**
-      * @name profileSuccessProfile
-      * @desc Update `profile` on viewmodel
+      * @name equipSuccessEquipment
+      * @desc Update `equip` on viewmodel
       */
       function equipSuccessFn(data, status, headers, config) {
         vm.equip = data.data;
@@ -103,30 +103,13 @@
 
 
       /**
-      * @name profileErrorFn
+      * @name equipErrorFn
       * @desc Redirect to index and show error Snackbar
       */
       function equipErrorFn(data, status, headers, config) {
         Snackbar.error(data.data.error);
       }
 
-      ///**
-      //* @name profilesSuccessProfile
-      //* @desc Update `profile` on viewmodel
-      //*/
-      //function profilesSuccessFn(data, status, headers, config) {
-      //  vm.profiles = data.data;
-      //}
-      //
-      //
-      ///**
-      //* @name profilesErrorFn
-      //* @desc Redirect to index and show error Snackbar
-      //*/
-      //function profilesErrorFn(data, status, headers, config) {
-      //
-      //  Snackbar.error('That user does not exist.');
-      //}
     }
   }
 })();

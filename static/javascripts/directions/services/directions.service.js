@@ -50,7 +50,7 @@
     * @returns {Promise}
     * @memberOf thinkster.profiles.services.Profile
     */
-    function get(user) {
+    function get(direction) {
       return $http.get('/api/v1/directions/' + direction + '/');
       //  return $http.get('/api/v1/accounts/' + user + '/'+user.direction+'/');
     }

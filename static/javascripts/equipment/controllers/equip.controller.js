@@ -9,16 +9,16 @@
     .module('thinkster.equipment.controllers')
     .controller('EquipmentController', EquipmentController);
 
-  EquipmentController.$inject = ['$http', '$location', '$routeParams', 'Equipment','Snackbar'];
+  EquipmentController.$inject = ['$routeParams', 'Equipment','Snackbar'];
 
   /**
   * @namespace EquipmentController
   */
-  function EquipmentController($http, $location,$routeParams, Equipment, Snackbar) {
+  function EquipmentController($routeParams, Equipment, Snackbar) {
     var vm = this;
 
     vm.equip = undefined;
-    vm.equips= undefined;
+    //vm.equips= undefined;
 
     activate();
 
@@ -28,11 +28,10 @@
     * @memberOf thinkster.equipment.controllers.EquipmentController
     */
     function activate() {
-      //var name = $routeParams.equipment.substr(1);
       var id = $routeParams.equip;
 
       Equipment.get_obj(id).then(equipmentSuccessFn, equipmentErrorFn);
-      Equipment.all().then(equipsSuccessFn, equipsErrorFn);
+      //Equipment.all().then(equipsSuccessFn, equipsErrorFn);
 
       /**
       * @name equipmentSuccessProfile
@@ -53,23 +52,23 @@
 
 
 
-        /**
-      * @name equipmentSuccessProfile
-      * @desc Update `equipment` on viewmodel
-      */
-      function equipsSuccessFn(data, status, headers, config) {
-        vm.equips = data.data;
-      }
-
-
-      /**
-      * @name equipmentErrorFn
-      * @desc Redirect to index and show error Snackbar
-      */
-      function equipsErrorFn(data, status, headers, config) {
-
-        Snackbar.error('That equipment does not exist.');
-      }
+      //  /**
+      //* @name equipmentSuccessProfile
+      //* @desc Update `equipment` on viewmodel
+      //*/
+      //function equipsSuccessFn(data, status, headers, config) {
+      //  vm.equips = data.data;
+      //}
+      //
+      //
+      ///**
+      //* @name equipmentErrorFn
+      //* @desc Redirect to index and show error Snackbar
+      //*/
+      //function equipsErrorFn(data, status, headers, config) {
+      //
+      //  Snackbar.error('That equipment does not exist.');
+      //}
 
     }
   }

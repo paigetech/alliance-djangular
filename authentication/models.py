@@ -83,10 +83,10 @@ class Account(AbstractBaseUser):
     def get_short_name(self):
         return self.first_name
 
-    def get_equipment(self):
-        from django.core import serializers
-        serialized_data = serializers.serialize("json", self.equipment_set.all(), fields=('name',))
-        return serialized_data
+    # def get_equipment(self):
+    #     from django.core import serializers
+    #     serialized_data = serializers.serialize("json", self.equipment_set.all(), fields=('name',))
+    #     return serialized_data
 
 
 class Equipment(models.Model):
