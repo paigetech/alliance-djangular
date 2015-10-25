@@ -14,9 +14,15 @@
           <input type="text" class="form-control" id="register__username" ng-model="vm.username" placeholder="ex. john"/>
         </div>
 
-        <div class="form-group">
+        <!--<div class="form-group">
           <label for="register__direction">Direction</label>
           <input type="text" class="form-control" id="register__direction" ng-model="vm.direction" placeholder="ex. direction"/>
+        </div>-->
+
+        <div class="form-group">
+          <label for="register__direction">Direction</label>
+            <input type="text"  class="form-control" id="register__direction" ng-model="vm.direction"
+                 typeahead="dir.name for dir in directions | filter:$viewValue" placeholder="ex. Space Research."/>
         </div>
 
         <div class="form-group">

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default" role="navigation" ng-controller="NavbarController as vm">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#not-google-plus-nav">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#open-lab-nav">
         <span class="sr-only">Toggle Navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -10,7 +10,7 @@
       <a class="navbar-brand" href="/">Open Laboratory</a>
     </div> <!-- ./navbar-header -->
 
-    <div class="collapse navbar-collapse" id="not-google-plus-nav">
+    <div class="collapse navbar-collapse" id="open-lab-nav">
       <ul class="nav navbar-nav pull-right">
         {% if user.is_authenticated %}
           <li><a href="/+{{ user.username }}">+{{ user.username }}</a></li>
@@ -20,9 +20,11 @@
           <li><a href="/login">Login</a></li>
           <li><a href="/register">Register</a></li>
         {% endif %}
-        <form class="navbar-form navbar-right">
-            <input type="text" class="form-control col-lg-8" placeholder="Search" name="q" ng-model="FilterService.LabFilter">
-        </form>
+          <li>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control col-lg-8" placeholder="Search" name="q" ng-model="FilterService.LabFilter">
+            </form>
+          </li>
       </ul>
     </div> <!-- /.collapse.navbar-collapse -->
   </div> <!-- /.container-fluid -->

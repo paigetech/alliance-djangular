@@ -74,12 +74,7 @@
       */
       function directionSuccessFn(data, status, headers, config) {
         vm.directions = data.data;
-        $scope.dirs = Object.keys(vm.directions);
-        console.log($scope.dirs);
-        vm.prof = vm.profile;
-        var index = vm.directions.map(function(e) { return e.name; }).indexOf(vm.prof.direction.name);
-        vm.selectedDirection = vm.directions[index]
-
+        $scope.directions = vm.directions;
       }
 
       /**

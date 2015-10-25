@@ -1,18 +1,12 @@
 <div class="profile" ng-show="vm.profile">
   <div class="jumbotron profile__header">
-    <h1 class="profile__username">+{{ vm.profile.username }}</h1>
+    <h2 class="profile__username">+{{ vm.profile.username }}</h2>
     <p class="profile__tagline">{{ vm.profile.tagline }}</p>
-      <h2>Direction</h2>
+      <h3>Direction</h3>
     <p class="profile__direction__name">{{ vm.profile.direction.name }}</p>
-      <h2>Equipment</h2>
-      !!<p class="profile__equipment_set">{{ vm.profile.equipment_set }}</p>
-      <ul   class="list-inline"">
+      <h3>Equipment</h3>
+      <ul class="list-inline"">
           <li  ng-repeat="equip in vm.profile.equipment_set" style="display: inline-block"><a href="equipment/{{ equip.id }}">{{ equip.name }} </a> {{ $last ? '.' : ($index==vm.equips.length-2) ? ' and  ' : ', '}}</li>
-      </ul>
-
-      &&
-      <ul   class="list-inline">
-          <li  ng-repeat="equip in vm.equips" style="display: inline-block"><a href="equipment/{{ equip.id }}">{{ equip.name }} </a> {{ $last ? '.' : ($index==vm.equips.length-2) ? ' and  ' : ', '}}</li>
       </ul>
   </div>
   <posts posts="vm.posts"></posts>

@@ -6,6 +6,7 @@
 
     angular
         .module('thinkster', [
+            'ui.bootstrap',
             'thinkster.config',
             'thinkster.routes',
             'thinkster.authentication',
@@ -32,18 +33,7 @@
       this.LabFilter = "";
     });
 
-    angular.module('thinkster').directive('autoComplete', function($timeout) {
-        return function(scope, iElement, iAttrs) {
-            iElement.autocomplete({
-                source: scope[iAttrs.uiItems],
-                select: function() {
-                    $timeout(function() {
-                      iElement.trigger('input');
-                    }, 0);
-                }
-            });
-        };
-    });
+
 
     angular
         .module('thinkster')

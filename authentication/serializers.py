@@ -5,15 +5,13 @@ from rest_framework import serializers
 from authentication.models import Account, Direction, Equipment
 
 
-class PrimaryKeyNestedMixin(serializers.RelatedField, serializers.ModelSerializer):
-
-    def to_internal_value(self, data):
-        print "to in", data
-        return serializers.PrimaryKeyRelatedField.to_internal_value(self, data)
-
-    def to_representation(self, data):
-        print "to re", data
-        return serializers.ModelSerializer.to_representation(self, data)
+# class PrimaryKeyNestedMixin(serializers.RelatedField, serializers.ModelSerializer):
+#
+#     def to_internal_value(self, data):
+#         return serializers.PrimaryKeyRelatedField.to_internal_value(self, data)
+#
+#     def to_representation(self, data):
+#         return serializers.ModelSerializer.to_representation(self, data)
 
 
 class DirectionSerializer( serializers.ModelSerializer):
@@ -41,7 +39,7 @@ class AccountSerializer(serializers.ModelSerializer):
     direction = DirectionSerializer()
     password = serializers.CharField(write_only=True, required=False)
     confirm_password = serializers.CharField(write_only=True, required=False)
-    equipment_set = EquipmentSerializer(many=True)
+    equipment_set = EquipmentSerializer(many=True, required=False)
 
     class Meta:
         model = Account
@@ -58,8 +56,6 @@ class AccountSerializer(serializers.ModelSerializer):
         direct = Direction.objects.get_or_create(name=direction_name)
         instance.direction = direct[0]
         direction = instance.direction
-
-        print direction.id
 
         instance.username = validated_data.get('username', instance.username)
         instance.tagline = validated_data.get('tagline', instance.tagline)

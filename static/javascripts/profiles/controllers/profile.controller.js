@@ -35,7 +35,7 @@
 
       Profile.get(username).then(profileSuccessFn, profileErrorFn);
       Posts.get(username).then(postsSuccessFn, postsErrorFn);
-      Equipment.get(username).then(equipmentSuccessFn, equipmentErrorFn);
+      Equipment.get(username).then(equipmentSuccessFn, equipmentErrorFn);//to_do: delete
 
       if (item_id) {
         Equipment.get_obj(item_id).then(equipSuccessFn, equipErrorFn);

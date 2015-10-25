@@ -9,15 +9,35 @@
     .module('thinkster.authentication.controllers')
     .controller('RegisterController', RegisterController);
 
-  RegisterController.$inject = ['$location', '$scope', 'Authentication', '$http'];
+  RegisterController.$inject = ['$location', '$scope', 'Authentication', '$http', 'Direction'];
 
   /**
   * @namespace RegisterController
   */
-  function RegisterController($location, $scope, Authentication, $http) {
+  function RegisterController($location, $scope, Authentication, $http, Direction) {
     var vm = this;
 
     vm.register = register;
+
+    $scope.selected = "";
+    Direction.all().then(directionSuccessFn, directionErrorFn);
+
+    /**
+      * @name directionSuccessFn
+      * @desc Update `direction` for view
+      */
+      function directionSuccessFn(data, status, headers, config) {
+        vm.directions = data.data;
+        $scope.directions = vm.directions;
+      }
+
+      /**
+      * @name directionErrorFn
+      * @desc Display error snackbar
+      */
+      function directionErrorFn(data, status, headers, config) {
+        Snackbar.error(data.error);
+      }
 
     ///**
     //* @name register

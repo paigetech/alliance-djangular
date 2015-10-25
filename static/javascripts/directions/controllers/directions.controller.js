@@ -48,23 +48,6 @@
         Snackbar.error(data.data.error);
       }
 
-      ///**
-      //* @name profilesSuccessProfile
-      //* @desc Update `profile` on viewmodel
-      //*/
-      //function profilesSuccessFn(data, status, headers, config) {
-      //  vm.profiles = data.data;
-      //}
-      //
-      //
-      ///**
-      //* @name profilesErrorFn
-      //* @desc Redirect to index and show error Snackbar
-      //*/
-      //function profilesErrorFn(data, status, headers, config) {
-      //
-      //  Snackbar.error('That user does not exist.');
-      //}
     }
   }
 })();

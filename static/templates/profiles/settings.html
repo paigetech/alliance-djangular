@@ -18,7 +18,8 @@
 
       <div class="form-group">
         <label for="settings__username">Username</label>
-        <input type="text" class="form-control" id="settings__username" ng-model="vm.profile.username" placeholder="ex. notgoogleplus" />
+          <p id="settings__username" >{{ vm.profile.username }}</p>
+        <!--<input type="text" class="form-control" id="settings__username" ng-model="vm.profile.username" placeholder="ex. notgoogleplus" />-->
       </div>
 
       <div class="form-group">
@@ -28,13 +29,8 @@
 
       <div class="form-group">
         <label for="settings__direction">Direction</label>
-          <input type="text" class="form-control" id="settings__direction" ng-model="vm.profile.direction.name" placeholder="ex. Space Research." />
-          <select ng-model="vm.selectedDirection" ng-options="direction.name for direction in vm.directions"></select>
-
-        <input auto-complete ui-items="dirs" ng-model="selected">
-                selected = {{selected}}
-      </div>
-
+          <input type="text"  class="form-control" id="settings__direction" ng-model="vm.profile.direction.name"
+                 typeahead="dir.name for dir in directions | filter:$viewValue" placeholder="ex. Space Research."/>
         <hr>
 
         <div class="form-group" >
