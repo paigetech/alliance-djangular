@@ -30,7 +30,7 @@
     * @memberOf thinkster.profiles.controllers.ProfileController
     */
     function activate() {
-      var username = $routeParams.username.substr(1);
+      var username = $routeParams.username;//.substr(1);
       var item_id = $routeParams.equip;
       var staff_id = $routeParams.staff;
 

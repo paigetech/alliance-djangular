@@ -34,7 +34,7 @@
     */
     function activate() {
       var authenticatedAccount = Authentication.getAuthenticatedAccount();
-      var username = $routeParams.username.substr(1);
+      var username = $routeParams.username;//.substr(1);
 
       // Redirect if not logged in
       if (!authenticatedAccount) {

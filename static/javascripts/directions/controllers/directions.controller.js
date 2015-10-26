@@ -27,7 +27,7 @@
     * @memberOf thinkster.profiles.controllers.DirectionController
     */
     function activate() {
-      var name = $routeParams.name.substr(1);
+      var name = $routeParams.name;//.substr(1);
 
       Direction.get(name).then(directionSuccessFn, directionErrorFn);
 
