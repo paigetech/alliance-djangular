@@ -37,6 +37,10 @@
             controller: 'EquipmentController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/equipment/equip.html'
+        }).when('/staff/:staff', {
+            controller: 'StaffController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/staff/staff.html'
         })//.otherwise('/');
     }
 })();

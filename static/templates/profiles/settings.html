@@ -1,20 +1,6 @@
 <div class="col-md-4 col-md-offset-4">
   <div class="well" ng-show="vm.profile">
     <form role="form" class="settings" ng-submit="vm.update()">
-      <div class="form-group">
-        <label for="settings__email">Email</label>
-        <input type="text" class="form-control" id="settings__email" ng-model="vm.profile.email" placeholder="ex. john@example.com" />
-      </div>
-
-      <div class="form-group">
-        <label for="settings__password">New Password</label>
-        <input type="password" class="form-control" id="settings__password" ng-model="vm.profile.password" placeholder="ex. notgoogleplus" />
-      </div>
-
-      <div class="form-group">
-        <label for="settings__confirm-password">Confirm Password</label>
-        <input type="password" class="form-control" id="settings__confirm-password" ng-model="vm.profile.confirm_password" placeholder="ex. notgoogleplus" />
-      </div>
 
       <div class="form-group">
         <label for="settings__username">Username</label>
@@ -23,8 +9,23 @@
       </div>
 
       <div class="form-group">
+        <label for="settings__email">Email</label>
+        <input type="text" class="form-control" id="settings__email" ng-model="vm.profile.email" placeholder="ex. john@example.com" />
+      </div>
+
+      <div class="form-group">
+        <label for="settings__password">New Password</label>
+        <input type="password" class="form-control" id="settings__password" ng-model="vm.profile.password" placeholder="ex. password" />
+      </div>
+
+      <div class="form-group">
+        <label for="settings__confirm-password">Confirm Password</label>
+        <input type="password" class="form-control" id="settings__confirm-password" ng-model="vm.profile.confirm_password" placeholder="ex. password" />
+      </div>
+
+      <div class="form-group">
         <label for="settings__tagline">Tagline</label>
-        <textarea class="form-control" id="settings__tagline" ng-model="vm.profile.tagline" placeholder="ex. This is Not Google Plus." />
+        <textarea class="form-control" id="settings__tagline" ng-model="vm.profile.tagline" placeholder="ex. This is my tagline." />
       </div>
 
       <div class="form-group">
@@ -47,6 +48,24 @@
               href="javascript:void(0)"
               ng-dialog="/static/templates/equipment/new-equip.html"
               ng-dialog-controller="NewEquipmentController as vm"></a>
+        </div>
+
+        <hr>
+
+        <div class="form-group" >
+            <label for="settings__staff">Staff</label>
+            <table class="table table-striped table-hover ">
+                <tbody>
+                <tr ng-repeat="st in vm.profile.staff_set" id="settings__staff__id{{ st.id }}" ng-model="st.name">
+                    <td>{{ st.name }}</td>
+                    <td><a href="javascript:void(0)"  ng-click="vm.destroyStaff(st.id)"><i class="mdi-content-remove-circle-outline"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+            <a class="btn btn-info btn-fab btn-fab-mini btn-raised mdi-content-add btn-add-new-equip "
+              href="javascript:void(0)"
+              ng-dialog="/static/templates/staff/new-staff.html"
+              ng-dialog-controller="NewStaffController as vm"></a>
         </div>
 
         <hr>

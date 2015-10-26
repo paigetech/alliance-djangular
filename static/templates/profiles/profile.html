@@ -8,6 +8,10 @@
       <ul class="list-inline"">
           <li  ng-repeat="equip in vm.profile.equipment_set" style="display: inline-block"><a href="equipment/{{ equip.id }}">{{ equip.name }} </a> {{ $last ? '.' : ($index==vm.equips.length-2) ? ' and  ' : ', '}}</li>
       </ul>
+      <h3>Staff</h3>
+      <ul class="list-inline"">
+          <li  ng-repeat="st in vm.profile.staff_set" style="display: inline-block"><a href="staff/{{ st.id }}">{{ st.name }} </a> {{ $last ? '.' : ($index==vm.equips.length-2) ? ' and  ' : ', '}}</li>
+      </ul>
   </div>
   <posts posts="vm.posts"></posts>
 </div>

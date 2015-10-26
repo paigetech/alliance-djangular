@@ -2,7 +2,7 @@ from django.contrib.auth import update_session_auth_hash
 
 from rest_framework import serializers
 
-from authentication.models import Account, Direction, Equipment
+from authentication.models import Account, Direction, Equipment, Staff
 
 
 # class PrimaryKeyNestedMixin(serializers.RelatedField, serializers.ModelSerializer):
@@ -34,16 +34,32 @@ class EquipmentSerializer(serializers.ModelSerializer):
         exclusions = super(EquipmentSerializer, self).get_validation_exclusions()
 
         return exclusions + ['lab']
+    
+
+class StaffSerializer(serializers.ModelSerializer):
+    # lab = AccountSerializer(read_only=True, required=False)
+
+    class Meta:
+        model = Staff
+
+        fields = ('id', 'lab', 'name',)
+        read_only_fields = ('id',)
+
+    def get_validation_exclusions(self, *args, **kwargs):
+        exclusions = super(StaffSerializer, self).get_validation_exclusions()
+
+        return exclusions + ['lab']
 
 class AccountSerializer(serializers.ModelSerializer):
     direction = DirectionSerializer()
     password = serializers.CharField(write_only=True, required=False)
     confirm_password = serializers.CharField(write_only=True, required=False)
     equipment_set = EquipmentSerializer(many=True, required=False)
+    staff_set = StaffSerializer(many=True, required=False)
 
     class Meta:
         model = Account
-        fields = ('id', 'email', 'username', 'created_at', 'updated_at', 'direction', 'equipment_set',#'get_equip', 'get_equipment',
+        fields = ('id', 'email', 'username', 'created_at', 'updated_at', 'direction', 'equipment_set', 'staff_set',
                   'first_name', 'last_name', 'tagline', 'password',
                   'confirm_password',)
         read_only_fields = ('created_at', 'updated_at',)

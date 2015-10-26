@@ -83,11 +83,6 @@ class Account(AbstractBaseUser):
     def get_short_name(self):
         return self.first_name
 
-    # def get_equipment(self):
-    #     from django.core import serializers
-    #     serialized_data = serializers.serialize("json", self.equipment_set.all(), fields=('name',))
-    #     return serialized_data
-
 
 class Equipment(models.Model):
     lab = models.ForeignKey(Account)
@@ -104,4 +99,16 @@ class Equipment(models.Model):
     class Meta:
         verbose_name = u"Equipment"
         verbose_name_plural = u"Equipment"
+
+
+class Staff(models.Model):
+    lab = models.ForeignKey(Account)
+    name = models.CharField(u'Staff', max_length=200,)
+
+    def __unicode__(self):
+        return u'%s' % (self.name)
+
+    class Meta:
+        verbose_name = u"Staff"
+        verbose_name_plural = u"Staff"
 

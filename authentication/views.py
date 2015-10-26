@@ -7,9 +7,9 @@ from rest_framework import permissions, viewsets
 from rest_framework import status, views
 from rest_framework.response import Response
 
-from authentication.models import Account, Direction, Equipment
+from authentication.models import Account, Direction, Equipment, Staff
 from authentication.permissions import IsAccountOwner, IsLabOfEquipment
-from authentication.serializers import AccountSerializer, DirectionSerializer, EquipmentSerializer
+from authentication.serializers import AccountSerializer, DirectionSerializer, EquipmentSerializer, StaffSerializer
 
 
 class DirectionViewSet(viewsets.ModelViewSet):
@@ -124,8 +124,34 @@ class EquipmentViewSet(viewsets.ModelViewSet):
         return super(EquipmentViewSet, self).perform_create(serializer)
 
 
-class AccountEquipmentsViewSet(viewsets.ViewSet):
+class AccountEquipmentViewSet(viewsets.ViewSet):
     queryset = Equipment.objects.select_related('lab').all()
+    serializer_class = EquipmentSerializer
+
+    def list(self, request, account_username=None):
+        queryset = self.queryset.filter(lab__username=account_username)
+        serializer = self.serializer_class(queryset, many=True)
+
+        return Response(serializer.data)
+
+
+class StaffViewSet(viewsets.ModelViewSet):
+    queryset = Staff.objects.all()
+    serializer_class = StaffSerializer
+
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+        return (permissions.IsAuthenticated(), IsLabOfEquipment(),)
+
+    def perform_create(self, serializer):
+        instance = serializer.save(lab=self.request.user)
+
+        return super(StaffViewSet, self).perform_create(serializer)
+
+
+class AccountStaffViewSet(viewsets.ViewSet):
+    queryset = Staff.objects.select_related('lab').all()
     serializer_class = EquipmentSerializer
 
     def list(self, request, account_username=None):

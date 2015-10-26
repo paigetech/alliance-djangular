@@ -16,6 +16,7 @@
             'thinkster.profiles',
             'thinkster.directions',
             'thinkster.equipment',
+            'thinkster.staff',
             'thinkster.filters'
         ]);
 

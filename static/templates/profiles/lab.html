@@ -14,6 +14,10 @@
             <ul class="list-inline">
                 <li ng-repeat="it in profile.equipment_set">{{ it.name }} {{ $last ? '.' : ($index==profile.equipment_set.length-2) ? ' and ' : ', '}}</li>
             </ul>
+            <h4>Staff</h4>
+            <ul class="list-inline">
+                <li ng-repeat="st in profile.staff_set">{{ st.name }} {{ $last ? '.' : ($index==profile.staff_set.length-2) ? ' and ' : ', '}}</li>
+            </ul>
         </div>
       </div>
     </div>

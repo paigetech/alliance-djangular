@@ -10,18 +10,19 @@
     .controller('ProfileSettingsController', ProfileSettingsController);
 
   ProfileSettingsController.$inject = [
-    '$scope', '$location', '$routeParams', 'Authentication', 'Profile', 'Snackbar', 'Equipment', '$route', 'Direction'
+    '$scope', '$location', '$routeParams', 'Authentication', 'Profile', 'Snackbar', 'Equipment', '$route', 'Direction', 'Staff'
   ];
 
   /**
   * @namespace ProfileSettingsController
   */
-  function ProfileSettingsController($scope, $location, $routeParams, Authentication, Profile, Snackbar, Equipment, $route, Direction) {
+  function ProfileSettingsController($scope, $location, $routeParams, Authentication, Profile, Snackbar, Equipment, $route, Direction, Staff) {
     var vm = this;
 
     vm.destroy = destroy;
     vm.update = update;
     vm.destroyEquip = destroyEquip;
+    vm.destroyStaff = destroyStaff;
 
     activate();
 
@@ -56,7 +57,6 @@
       */
       function profileSuccessFn(data, status, headers, config) {
         vm.profile = data.data;
-        //vm.profile.get_equipment_array = $parse(vm.profile.get_equipment)(vm);
       }
 
       /**
@@ -155,6 +155,23 @@
       }
 
       function equipErrorFn(data, status, headers, config) {
+        Snackbar.error(data.error);
+      }
+    }
+
+    function destroyStaff(staff_id) {
+      Staff.destroy(staff_id).then(staffSuccessFn, staffErrorFn);
+
+      /**
+       * @name staffSuccessFn
+       * @desc Redirect to index and display success snackbar
+       */
+      function staffSuccessFn(data, status, headers, config) {
+        $route.reload();
+        Snackbar.show('Staff member has been deleted.');
+      }
+
+      function staffErrorFn(data, status, headers, config) {
         Snackbar.error(data.error);
       }
     }

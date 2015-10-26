@@ -9,7 +9,7 @@
     .module('thinkster.profiles.controllers')
     .controller('ProfileController', ProfileController);
 
-  ProfileController.$inject = ['$location', '$routeParams', 'Posts', 'Profile', 'Equipment','Snackbar'];
+  ProfileController.$inject = ['$location', '$routeParams', 'Posts', 'Profile', 'Equipment', 'Snackbar'];
 
   /**
   * @namespace ProfileController
@@ -32,6 +32,7 @@
     function activate() {
       var username = $routeParams.username.substr(1);
       var item_id = $routeParams.equip;
+      var staff_id = $routeParams.staff;
 
       Profile.get(username).then(profileSuccessFn, profileErrorFn);
       Posts.get(username).then(postsSuccessFn, postsErrorFn);
