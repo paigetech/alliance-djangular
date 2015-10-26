@@ -56,13 +56,15 @@ class AccountManager(BaseUserManager):
 
 class Account(AbstractBaseUser):
     email = models.EmailField(unique=True)
-    username = models.CharField(max_length=40, unique=True)
+    username = models.CharField(max_length=200, unique=True)
 
     direction = models.ForeignKey(Direction, verbose_name=u'Direction', null=True)
 
     first_name = models.CharField(max_length=40, blank=True)
     last_name = models.CharField(max_length=40, blank=True)
     tagline = models.CharField(max_length=140, blank=True)
+    phone = models.CharField(max_length=140, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
 
     is_admin = models.BooleanField(default=False)
 

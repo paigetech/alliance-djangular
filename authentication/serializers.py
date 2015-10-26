@@ -50,7 +50,8 @@ class StaffSerializer(serializers.ModelSerializer):
 
         return exclusions + ['lab']
 
-class AccountSerializer(serializers.ModelSerializer):
+
+class AccountSerializer(serializers.ModelSerializer):   # serializers.ModelSerializer serializers.HyperlinkedModelSerializer
     direction = DirectionSerializer()
     password = serializers.CharField(write_only=True, required=False)
     confirm_password = serializers.CharField(write_only=True, required=False)
@@ -60,10 +61,9 @@ class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
         fields = ('id', 'email', 'username', 'created_at', 'updated_at', 'direction', 'equipment_set', 'staff_set',
-                  'first_name', 'last_name', 'tagline', 'password',
+                  'first_name', 'last_name', 'tagline', 'phone', 'description', 'password',
                   'confirm_password',)
         read_only_fields = ('created_at', 'updated_at',)
-
 
     def update(self, instance, validated_data):
         direction_data = validated_data.pop('direction')
@@ -75,6 +75,8 @@ class AccountSerializer(serializers.ModelSerializer):
 
         instance.username = validated_data.get('username', instance.username)
         instance.tagline = validated_data.get('tagline', instance.tagline)
+        instance.phone = validated_data.get('phone', instance.phone)
+        instance.description = validated_data.get('description', instance.description)
 
         instance.save()
 
@@ -91,18 +93,3 @@ class AccountSerializer(serializers.ModelSerializer):
         update_session_auth_hash(self.context.get('request'), instance)
 
         return instance
-    
-    
-# class EquipmentSerializer(serializers.ModelSerializer):
-#     # lab = AccountSerializer(read_only=True, required=False)
-#
-#     class Meta:
-#         model = Equipment
-#
-#         fields = ('id', 'lab', 'name',)
-#         read_only_fields = ('id',)
-#
-#     def get_validation_exclusions(self, *args, **kwargs):
-#         exclusions = super(EquipmentSerializer, self).get_validation_exclusions()
-#
-#         return exclusions + ['lab']

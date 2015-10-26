@@ -1,6 +1,8 @@
 <div class="profile" ng-show="vm.profile">
   <div class="jumbotron profile__header">
     <h2 class="profile__username">{{ vm.profile.username }}</h2>
+
+      <p class="profile__email">{{ vm.profile.email }}</p>
     <p class="profile__tagline">{{ vm.profile.tagline }}</p>
       <h3>Direction</h3>
     <p class="profile__direction__name">{{ vm.profile.direction.name }}</p>
@@ -12,6 +14,10 @@
       <ul class="list-inline"">
           <li  ng-repeat="st in vm.profile.staff_set" style="display: inline-block"><a href="staff/{{ st.id }}">{{ st.name }} </a> {{ $last ? '.' : ($index==vm.equips.length-2) ? ' and  ' : ', '}}</li>
       </ul>
+      <h3>Phone</h3>
+      <p class="profile__phone">{{ vm.profile.phone }}</p>
+      <h3>Description</h3>
+      <p class="profile__description">{{ vm.profile.description }}</p>
   </div>
   <posts posts="vm.posts"></posts>
 </div>

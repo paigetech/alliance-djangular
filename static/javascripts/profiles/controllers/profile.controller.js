@@ -21,6 +21,7 @@
     vm.direction = undefined;
     vm.posts = [];
     vm.equips = [];
+    //vm.getApi = undefined;
 
     activate();
 
@@ -32,11 +33,30 @@
     function activate() {
       var username = $routeParams.username;//.substr(1);
       var item_id = $routeParams.equip;
-      var staff_id = $routeParams.staff;
 
       Profile.get(username).then(profileSuccessFn, profileErrorFn);
       Posts.get(username).then(postsSuccessFn, postsErrorFn);
       Equipment.get(username).then(equipmentSuccessFn, equipmentErrorFn);//to_do: delete
+      //Profile.getApi().then(apiSuccessFn, apiErrorFn);
+
+      ///**
+      //* @name profileSuccessFn
+      //* @desc Redirect to index and display success snackbar
+      //*/
+      //function apiSuccessFn(data, status, headers, config) {
+      //  Snackbar.show('Here is API.');
+      //  //vm.getApi = data.data;
+      //
+      //}
+      //
+      //
+      ///**
+      //* @name profileErrorFn
+      //* @desc Display error snackbar
+      //*/
+      //function apiErrorFn(data, status, headers, config) {
+      //  Snackbar.error(data.error);
+      //}
 
       if (item_id) {
         Equipment.get_obj(item_id).then(equipSuccessFn, equipErrorFn);
@@ -112,5 +132,9 @@
       }
 
     }
+
+
+
+
   }
 })();

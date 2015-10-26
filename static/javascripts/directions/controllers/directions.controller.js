@@ -9,12 +9,12 @@
     .module('thinkster.profiles.controllers')
     .controller('DirectionController', DirectionController);
 
-  DirectionController.$inject = ['$location', '$routeParams', 'Posts', 'Profile', 'Direction','Snackbar'];
+  DirectionController.$inject = ['$routeParams', 'Direction','Snackbar'];
 
   /**
   * @namespace ProfileController
   */
-  function DirectionController($location, $routeParams, Posts, Profile, Direction, Snackbar) {
+  function DirectionController( $routeParams, Direction, Snackbar) {
     var vm = this;
 
     vm.direction = undefined;

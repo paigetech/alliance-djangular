@@ -5,7 +5,10 @@ from django.contrib.auth import logout
 
 from rest_framework import permissions, viewsets
 from rest_framework import status, views
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.reverse import reverse as rest_reverse
+from rest_framework.permissions import IsAdminUser, IsAuthenticated, IsAuthenticatedOrReadOnly
 
 from authentication.models import Account, Direction, Equipment, Staff
 from authentication.permissions import IsAccountOwner, IsLabOfEquipment
@@ -159,3 +162,16 @@ class AccountStaffViewSet(viewsets.ViewSet):
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data)
+
+
+@api_view(('GET',))
+@permission_classes((IsAuthenticatedOrReadOnly, ))#IsAdminUser IsAuthenticated
+def api_root(request, format=None):
+    """Api Root"""
+    return Response({
+        'accounts': rest_reverse('account-list', request=request, format=format),
+        'posts': rest_reverse('post-list', request=request, format=format),
+        'directions': rest_reverse('direction-list', request=request, format=format),
+        'equipment': rest_reverse('equipment-list', request=request, format=format),
+        'staff': rest_reverse('staff-list', request=request, format=format),
+    })

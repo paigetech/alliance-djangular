@@ -24,7 +24,8 @@
       destroy: destroy,
       get: get,
       update: update,
-      all: all,
+      all: all
+      //getApi: getApi
     };
 
     return Profile;
@@ -74,5 +75,16 @@
     function all() {
       return $http.get('/api/v1/accounts/');
     }
+
+    ///**
+    //* @name getApi
+    //* @desc Gets the Api root for user with username `username`
+    //* @param {string} username The username of the user to fetch
+    //* @returns {Promise}
+    //* @memberOf thinkster.profiles.services.Profile
+    //*/
+    //function getApi() {
+    //  return $http.get('/api/');
+    //}
   }
 })();
