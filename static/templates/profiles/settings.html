@@ -1,9 +1,9 @@
-<div class="col-md-4 col-md-offset-4">
+<div class="col-md-8 col-md-offset-2">
   <div class="well" ng-show="vm.profile">
     <form role="form" class="settings" ng-submit="vm.update()">
 
       <div class="form-group">
-        <label for="settings__username">Username</label>
+        <label for="settings__username">Laboratory Name</label>
           <p id="settings__username" >{{ vm.profile.username }}</p>
       </div>
 
@@ -35,7 +35,7 @@
       <div class="form-group">
         <label for="settings__direction">Direction</label>
           <input type="text"  class="form-control" id="settings__direction" ng-model="vm.profile.direction.name"
-                 typeahead="dir.name for dir in directions | filter:$viewValue" placeholder="ex. Space Research."/>
+                 typeahead="dir.name for dir in directions | filter:$viewValue" placeholder="ex. Space Research." required/>
       </div>
         <hr>
 

@@ -9,12 +9,12 @@
     .module('thinkster.authentication.controllers')
     .controller('RegisterController', RegisterController);
 
-  RegisterController.$inject = ['$location', '$scope', 'Authentication', '$http', 'Direction'];
+  RegisterController.$inject = ['$location', '$scope', 'Authentication', '$http', 'Direction', 'Snackbar'];
 
   /**
   * @namespace RegisterController
   */
-  function RegisterController($location, $scope, Authentication, $http, Direction) {
+  function RegisterController($location, $scope, Authentication, $http, Direction, Snackbar) {
     var vm = this;
 
     vm.register = register;
@@ -39,14 +39,6 @@
         Snackbar.error(data.error);
       }
 
-    ///**
-    //* @name register
-    //* @desc Register a new user
-    //* @memberOf thinkster.authentication.controllers.RegisterController
-    //*/
-    //function register() {
-    //  Authentication.register(vm.email, vm.password, vm.username);
-    //}
 
     /**
     * @name register
@@ -78,6 +70,7 @@
       * @desc Log "Epic failure!" to the console
       */
       function registerErrorFn(data, status, headers, config) {
+        Snackbar.error(data.data.message);
         console.error('Epic failure!');
       }
     }
@@ -96,14 +89,5 @@
         $location.url('/');
       }
     }
-
-
-
-
-
-
   }
-
-
-
 })();

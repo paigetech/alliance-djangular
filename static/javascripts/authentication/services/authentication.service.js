@@ -9,13 +9,13 @@
     .module('thinkster.authentication.services')
     .factory('Authentication', Authentication);
 
-  Authentication.$inject = ['$cookies', '$http'];
+  Authentication.$inject = ['$cookies', '$http', 'Snackbar'];
 
   /**
   * @namespace Authentication
   * @returns {Factory}
   */
-  function Authentication($cookies, $http) {
+  function Authentication($cookies, $http, Snackbar) {
     /**
     * @name Authentication
     * @desc The Factory to be returned
@@ -52,19 +52,6 @@
       });
     }
 
-    //    /**
-    // * @name login
-    // * @desc Try to log in with email `email` and password `password`
-    // * @param {string} email The email entered by the user
-    // * @param {string} password The password entered by the user
-    // * @returns {Promise}
-    // * @memberOf thinkster.authentication.services.Authentication
-    // */
-    //function login(email, password) {
-    //  return $http.post('/api/v1/auth/login/', {
-    //    email: email, password: password
-    //  });
-    //}
 
     /**
      * @name login
@@ -94,6 +81,7 @@
        * @desc Log "Epic failure!" to the console
        */
       function loginErrorFn(data, status, headers, config) {
+       Snackbar.error(data.data.message);
         console.error('Epic failure!');
       }
     }

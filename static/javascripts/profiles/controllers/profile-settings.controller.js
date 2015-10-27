@@ -138,7 +138,19 @@
       * @desc Show error snackbar
       */
       function profileErrorFn(data, status, headers, config) {
-        Snackbar.error(data.error);
+        String.prototype.format = function () {
+          var i = 0, args = arguments;
+          return this.replace(/{}/g, function () {
+            return typeof args[i] != 'undefined' ? args[i++] : '';
+          });
+        };
+
+        var message = '';
+        _.each( data.data, function( val, key ) {
+          var newmessage =' {}: {}'.format(key, val[0] );
+          message += newmessage;
+        });
+        Snackbar.error(message);
       }
     }
 

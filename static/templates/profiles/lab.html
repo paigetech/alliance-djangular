@@ -1,25 +1,20 @@
-<div class="row">
-  <div class="col-sm-12">
-    <div class="well">
-      <div class="profile">
-        <div class="profile__meta">
-          <a href="/{{ profile.username }}">
-            {{ profile.username }}
-          </a>
-            <h4>Email</h4>
-            <p>{{ profile.email }}</p>
-            <h4>Direction</h4>
-            <p>{{ profile.direction.name }}</p>
-            <h4>Equipment</h4>
-            <ul class="list-inline">
-                <li ng-repeat="it in profile.equipment_set">{{ it.name }} {{ $last ? '.' : ($index==profile.equipment_set.length-2) ? ' and ' : ', '}}</li>
-            </ul>
-            <h4>Staff</h4>
-            <ul class="list-inline">
-                <li ng-repeat="st in profile.staff_set">{{ st.name }} {{ $last ? '.' : ($index==profile.staff_set.length-2) ? ' and ' : ', '}}</li>
-            </ul>
-        </div>
-      </div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a href="/{{ profile.username }}">
+            <h4>{{ profile.username }}</h4>
+        </a></div>
+    <div class="panel-body">
+        <h4>Email</h4>
+        <p>{{ profile.email }}</p>
+        <h4>Direction</h4>
+        <p>{{ profile.direction.name }}</p>
+        <h4>Equipment</h4>
+        <ul class="list-inline">
+            <li ng-repeat="it in profile.equipment_set">{{ it.name }} {{ $last ? '.' : ', '}}</li>
+        </ul>
+        <h4>Staff</h4>
+        <ul class="list-inline">
+            <li ng-repeat="st in profile.staff_set">{{ st.name }} {{ $last ? '.' : ', '}}</li>
+        </ul>
     </div>
-  </div>
 </div>

@@ -21,7 +21,6 @@ class Direction(models.Model):
 
 class AccountManager(BaseUserManager):
     def create_user(self, email, password=None, **kwargs):
-        print "create user", kwargs
         if not email:
             raise ValueError('Users must have a valid email address.')
 

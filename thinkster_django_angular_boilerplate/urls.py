@@ -33,6 +33,6 @@ urlpatterns = patterns(
 
     # url('^.*$', IndexView.as_view(), name='index'),
     url('^$', IndexView.as_view(), name='index'),
-    url(r'^api/$', api_root, name='api_root'),
+    url(r'^api/v1/$', api_root, name='api_root'),
 
 )
