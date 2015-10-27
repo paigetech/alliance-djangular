@@ -1,12 +1,12 @@
 /**
 * Equipment
-* @namespace thinkster.equipment.directives
+* @namespace openlab.equipment.directives
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.equipment.directives')
+    .module('openlab.equipment.directives')
     .directive('equip', equip);
 
   /**
@@ -16,7 +16,7 @@
     /**
     * @name directive
     * @desc The directive to be returned
-    * @memberOf thinkster.equipment.directives.equip
+    * @memberOf openlab.equipment.directives.equip
     */
     var directive = {
       //controller: 'EquipmentsController',

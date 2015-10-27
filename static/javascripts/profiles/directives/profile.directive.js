@@ -1,12 +1,12 @@
 /**
 * Profile
-* @namespace thinkster.profiles.directives
+* @namespace openlab.profiles.directives
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.profiles.directives')
+    .module('openlab.profiles.directives')
     .directive('profile', profile);
 
   /**
@@ -16,7 +16,7 @@
     /**
     * @name directive
     * @desc The directive to be returned
-    * @memberOf thinkster.profiles.directives.Profile
+    * @memberOf openlab.profiles.directives.Profile
     */
     var directive = {
       restrict: 'E',

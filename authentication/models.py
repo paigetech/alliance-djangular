@@ -19,7 +19,7 @@ class Direction(models.Model):
         verbose_name_plural = u"Direction"
 
 
-class AccountManager(BaseUserManager):
+class AccountManager(BaseUserManager):  # , PermissionsMixin):
     def create_user(self, email, password=None, **kwargs):
         if not email:
             raise ValueError('Users must have a valid email address.')
@@ -83,6 +83,21 @@ class Account(AbstractBaseUser):
 
     def get_short_name(self):
         return self.first_name
+
+    @property
+    def is_superuser(self):
+        return self.is_admin
+
+    @property
+    def is_staff(self):
+        "Is the user a member of staff?"
+        return self.is_admin
+
+    def has_perm(self, perm, obj=None):
+        return self.is_admin
+
+    def has_module_perms(self, app_label):
+        return self.is_admin
 
 
 class Equipment(models.Model):

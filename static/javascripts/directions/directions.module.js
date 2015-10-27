@@ -2,14 +2,14 @@
   'use strict';
 
   angular
-    .module('thinkster.directions', [
-      'thinkster.directions.controllers',
-      'thinkster.directions.services'
+    .module('openlab.directions', [
+      'openlab.directions.controllers',
+      'openlab.directions.services'
     ]);
 
   angular
-    .module('thinkster.directions.controllers', []);
+    .module('openlab.directions.controllers', []);
 
   angular
-    .module('thinkster.directions.services', []);
+    .module('openlab.directions.services', []);
 })();

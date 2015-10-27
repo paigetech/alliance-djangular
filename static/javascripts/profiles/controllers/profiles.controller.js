@@ -1,12 +1,12 @@
 /**
 * ProfilesController
-* @namespace thinkster.profiles.controllers
+* @namespace openlab.profiles.controllers
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.profiles.controllers')
+    .module('openlab.profiles.controllers')
     .controller('ProfilesController', ProfilesController);
 
   ProfilesController.$inject = ['$scope', '$rootScope', '$http', 'Profile', 'Snackbar', 'FilterService'];
@@ -26,7 +26,7 @@
     /**
     * @name activate
     * @desc Actions to be performed when this controller is instantiated
-    * @memberOf thinkster.profiles.controllers.ProfilesController
+    * @memberOf openlab.profiles.controllers.ProfilesController
     */
     function activate() {
         Profiles.all().then(profilesSuccessFn, profilesErrorFn);

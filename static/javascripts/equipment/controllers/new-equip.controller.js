@@ -1,12 +1,12 @@
 /**
 * NewEquipmentController
-* @namespace thinkster.equipment.controllers
+* @namespace openlab.equipment.controllers
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.equipment.controllers')
+    .module('openlab.equipment.controllers')
     .controller('NewEquipmentController', NewEquipmentController);
 
   NewEquipmentController.$inject = ['$rootScope', '$scope', '$route', 'Authentication', 'Snackbar', 'Equipment'];
@@ -22,7 +22,7 @@
     /**
     * @name submit
     * @desc Create a new Equipment
-    * @memberOf thinkster.equipment.controllers.NewEquipmentController
+    * @memberOf openlab.equipment.controllers.NewEquipmentController
     */
     function submit() {
       $rootScope.$broadcast('equipment.added', {

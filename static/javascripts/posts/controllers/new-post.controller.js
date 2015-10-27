@@ -1,12 +1,12 @@
 /**
 * NewPostController
-* @namespace thinkster.posts.controllers
+* @namespace openlab.posts.controllers
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.posts.controllers')
+    .module('openlab.posts.controllers')
     .controller('NewPostController', NewPostController);
 
   NewPostController.$inject = ['$rootScope', '$scope', 'Authentication', 'Snackbar', 'Posts'];
@@ -22,7 +22,7 @@
     /**
     * @name submit
     * @desc Create a new Post
-    * @memberOf thinkster.posts.controllers.NewPostController
+    * @memberOf openlab.posts.controllers.NewPostController
     */
     function submit() {
       $rootScope.$broadcast('post.created', {

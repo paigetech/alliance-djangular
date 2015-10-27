@@ -1,12 +1,12 @@
 /**
 * Post
-* @namespace thinkster.posts.directives
+* @namespace openlab.posts.directives
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.posts.directives')
+    .module('openlab.posts.directives')
     .directive('post', post);
 
   /**
@@ -16,7 +16,7 @@
     /**
     * @name directive
     * @desc The directive to be returned
-    * @memberOf thinkster.posts.directives.Post
+    * @memberOf openlab.posts.directives.Post
     */
     var directive = {
       restrict: 'E',

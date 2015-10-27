@@ -2,18 +2,18 @@
   'use strict';
 
   angular
-      .module('thinkster.equipment', [
-        'thinkster.equipment.controllers',
-        'thinkster.equipment.services',
-        'thinkster.equipment.directives'
+      .module('openlab.equipment', [
+        'openlab.equipment.controllers',
+        'openlab.equipment.services',
+        'openlab.equipment.directives'
     ]);
 
   angular
-      .module('thinkster.equipment.controllers', []);
+      .module('openlab.equipment.controllers', []);
 
   angular
-      .module('thinkster.equipment.services', []);
+      .module('openlab.equipment.services', []);
 
     angular
-      .module('thinkster.equipment.directives', ['ngDialog']);
+      .module('openlab.equipment.directives', ['ngDialog']);
 })();

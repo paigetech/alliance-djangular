@@ -1,12 +1,12 @@
 /**
 * IndexController
-* @namespace thinkster.layout.controllers
+* @namespace openlab.layout.controllers
 */
 (function () {
     'use strict';
 
     angular
-        .module('thinkster.layout.controllers')
+        .module('openlab.layout.controllers')
         .controller('IndexController', IndexController);
 
     IndexController.$inject = ['$scope', 'Authentication', 'Posts', 'Snackbar', 'Profile'];
@@ -26,7 +26,7 @@
         /**
         * @name activate
         * @desc Actions to be performed when this controller is instantiated
-        * @memberOf thinkster.layout.controllers.IndexController
+        * @memberOf openlab.layout.controllers.IndexController
         */
         function activate() {
             Posts.all().then(postsSuccessFn, postsErrorFn);

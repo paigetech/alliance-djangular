@@ -1,12 +1,12 @@
 /**
 * NavbarController
-* @namespace thinkster.layout.controllers
+* @namespace openlab.layout.controllers
 */
 (function () {
   'use strict';
 
   angular
-      .module('thinkster.layout.controllers')
+      .module('openlab.layout.controllers')
       .controller('NavbarController', NavbarController);
 
   NavbarController.$inject = ['$rootScope','$scope', 'Authentication', 'FilterService' ];
@@ -24,7 +24,7 @@
       /**
       * @name logout
       * @desc Log the user out
-      * @memberOf thinkster.layout.controllers.NavbarController
+      * @memberOf openlab.layout.controllers.NavbarController
       */
       function logout() {
         Authentication.logout();

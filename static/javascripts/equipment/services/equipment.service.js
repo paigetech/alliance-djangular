@@ -1,12 +1,12 @@
 /**
 * Posts
-* @namespace thinkster.equipment.services
+* @namespace openlab.equipment.services
 */
 (function () {
     'use strict';
 
     angular
-        .module('thinkster.equipment.services')
+        .module('openlab.equipment.services')
         .factory('Equipment', Equipment);
 
     Equipment.$inject = ['$http'];
@@ -33,7 +33,7 @@
     * @desc Destroys the given equipment
     * @param {Object} equipment The equipment to be destroyed
     * @returns {Promise}
-    * @memberOf thinkster.equipment.services.Equipment
+    * @memberOf openlab.equipment.services.Equipment
     */
     function destroy(equipment) {
       return $http.delete('/api/v1/equipment/' + equipment + '/');
@@ -43,7 +43,7 @@
     * @name all
     * @desc Get all Equipment
     * @returns {Promise}
-    * @memberOf thinkster.equipment.services.Equipment
+    * @memberOf openlab.equipment.services.Equipment
     */
     function all() {
         return $http.get('/api/v1/equipment/');
@@ -54,7 +54,7 @@
     * @desc Create a new Equipment
     * @param {string} content The content of the new Post
     * @returns {Promise}
-    * @memberOf thinkster.equipment.services.Equipment
+    * @memberOf openlab.equipment.services.Equipment
     */
     function create(name, lab) {
         return $http.post('/api/v1/equipment/', {
@@ -68,7 +68,7 @@
      * @desc Get the Equipment of a given user
      * @param {string} username The username to get Posts for
      * @returns {Promise}
-     * @memberOf thinkster.equipment.services.Equipment
+     * @memberOf openlab.equipment.services.Equipment
      */
     function get(username) {
         return $http.get('/api/v1/accounts/' + username + '/equipment/');

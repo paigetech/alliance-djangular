@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('thinkster.filters')
+        .module('openlab.filters')
         .filter('IndexFilter', IndexFilter);
 
     IndexFilter.$inject = ['$rootScope'];

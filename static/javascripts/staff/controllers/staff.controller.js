@@ -1,12 +1,12 @@
 /**
 * StaffController
-* @namespace thinkster.staff.controllers
+* @namespace openlab.staff.controllers
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.staff.controllers')
+    .module('openlab.staff.controllers')
     .controller('StaffController', StaffController);
 
   StaffController.$inject = ['$routeParams', 'Staff','Snackbar'];
@@ -25,7 +25,7 @@
     /**
     * @name activate
     * @desc Actions to be performed when this controller is instantiated
-    * @memberOf thinkster.staff.controllers.StaffController
+    * @memberOf openlab.staff.controllers.StaffController
     */
     function activate() {
       var id = $routeParams.staff;

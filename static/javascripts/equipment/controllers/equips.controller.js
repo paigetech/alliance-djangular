@@ -1,12 +1,12 @@
 /**
 * EquipmentsController
-* @namespace thinkster.equipment.controllers
+* @namespace openlab.equipment.controllers
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.equipment.controllers')
+    .module('openlab.equipment.controllers')
     .controller('EquipmentsController', EquipmentsController);
 
   EquipmentsController.$inject = ['Equipment','Snackbar'];
@@ -24,7 +24,7 @@
     /**
     * @name activate
     * @desc Actions to be performed when this controller is instantiated
-    * @memberOf thinkster.equipment.controllers.EquipmentsController
+    * @memberOf openlab.equipment.controllers.EquipmentsController
     */
     function activate() {
         Equipment.all().then(equipmentSuccessFn, equipmentErrorFn);

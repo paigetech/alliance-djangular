@@ -1,12 +1,12 @@
 /**
 * Register controller
-* @namespace thinkster.authentication.controllers
+* @namespace openlab.authentication.controllers
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.authentication.controllers')
+    .module('openlab.authentication.controllers')
     .controller('RegisterController', RegisterController);
 
   RegisterController.$inject = ['$location', '$scope', 'Authentication', '$http', 'Direction', 'Snackbar'];
@@ -47,7 +47,7 @@
     * @param {string} password The password entered by the user
     * @param {string} username The username entered by the user
     * @returns {Promise}
-    * @memberOf thinkster.authentication.services.Authentication
+    * @memberOf openlab.authentication.services.Authentication
     */
     function register(email, password, username, direction) {
       return $http.post('/api/v1/accounts/', {
@@ -81,7 +81,7 @@
     /**
      * @name activate
      * @desc Actions to be performed when this controller is instantiated
-     * @memberOf thinkster.authentication.controllers.RegisterController
+     * @memberOf openlab.authentication.controllers.RegisterController
      */
     function activate() {
       // If the user is authenticated, they should not be here.

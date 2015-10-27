@@ -1,12 +1,12 @@
 /**
 * Snackbar
-* @namespace thinkster.utils.services
+* @namespace openlab.utils.services
 */
 (function ($, _) {
     'use strict';
 
     angular
-        .module('thinkster.utils.services')
+        .module('openlab.utils.services')
         .factory('Snackbar', Snackbar);
 
     /**
@@ -44,7 +44,7 @@
         * @desc Display an error snackbar
         * @param {string} content The content of the snackbar
         * @param {Object} options Options for displaying the snackbar
-        * @memberOf thinkster.utils.services.Snackbar
+        * @memberOf openlab.utils.services.Snackbar
         */
         function error(content, options) {
             _snackbar('Error: ' + content, options);
@@ -56,7 +56,7 @@
         * @desc Display a standard snackbar
         * @param {string} content The content of the snackbar
         * @param {Object} options Options for displaying the snackbar
-        * @memberOf thinkster.utils.services.Snackbar
+        * @memberOf openlab.utils.services.Snackbar
         */
         function show(content, options) {
             _snackbar(content, options);

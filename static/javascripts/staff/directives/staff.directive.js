@@ -1,12 +1,12 @@
 /**
 * Staff
-* @namespace thinkster.staff.directives
+* @namespace openlab.staff.directives
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.staff.directives')
+    .module('openlab.staff.directives')
     .directive('staff', staff);
 
   /**
@@ -16,7 +16,7 @@
     /**
     * @name directive
     * @desc The directive to be returned
-    * @memberOf thinkster.staff.directives.Staff
+    * @memberOf openlab.staff.directives.Staff
     */
     var directive = {
       //controller: 'staffsController',

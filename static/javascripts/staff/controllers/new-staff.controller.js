@@ -1,12 +1,12 @@
 /**
 * NewStaffController
-* @namespace thinkster.staff.controllers
+* @namespace openlab.staff.controllers
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.staff.controllers')
+    .module('openlab.staff.controllers')
     .controller('NewStaffController', NewStaffController);
 
   NewStaffController.$inject = ['$rootScope', '$scope', '$route', 'Authentication', 'Snackbar', 'Staff'];
@@ -22,7 +22,7 @@
     /**
     * @name submit
     * @desc Create a new Staff
-    * @memberOf thinkster.staff.controllers.NewStaffController
+    * @memberOf openlab.staff.controllers.NewStaffController
     */
     function submit() {
       $rootScope.$broadcast('Staff.added', {

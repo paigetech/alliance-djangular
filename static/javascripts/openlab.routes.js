@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('thinkster.routes')
+        .module('openlab.routes')
         .config(config);
 
 

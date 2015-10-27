@@ -2,14 +2,14 @@
   'use strict';
 
   angular
-    .module('thinkster.authentication', [
-      'thinkster.authentication.controllers',
-      'thinkster.authentication.services'
+    .module('openlab.authentication', [
+      'openlab.authentication.controllers',
+      'openlab.authentication.services'
     ]);
 
   angular
-    .module('thinkster.authentication.controllers', []);
+    .module('openlab.authentication.controllers', []);
 
   angular
-    .module('thinkster.authentication.services', ['ngCookies']);
+    .module('openlab.authentication.services', ['ngCookies']);
 })();

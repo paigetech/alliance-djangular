@@ -2,18 +2,18 @@
   'use strict';
 
   angular
-      .module('thinkster.profiles', [
-        'thinkster.profiles.controllers',
-        'thinkster.profiles.services',
-        'thinkster.profiles.directives'
+      .module('openlab.profiles', [
+        'openlab.profiles.controllers',
+        'openlab.profiles.services',
+        'openlab.profiles.directives'
     ]);
 
   angular
-      .module('thinkster.profiles.controllers', []);
+      .module('openlab.profiles.controllers', []);
 
   angular
-      .module('thinkster.profiles.services', []);
+      .module('openlab.profiles.services', []);
 
     angular
-      .module('thinkster.profiles.directives', []);
+      .module('openlab.profiles.directives', []);
 })();

@@ -2,18 +2,18 @@
   'use strict';
 
   angular
-      .module('thinkster.staff', [
-        'thinkster.staff.controllers',
-        'thinkster.staff.services',
-        'thinkster.staff.directives'
+      .module('openlab.staff', [
+        'openlab.staff.controllers',
+        'openlab.staff.services',
+        'openlab.staff.directives'
     ]);
 
   angular
-      .module('thinkster.staff.controllers', []);
+      .module('openlab.staff.controllers', []);
 
   angular
-      .module('thinkster.staff.services', []);
+      .module('openlab.staff.services', []);
 
     angular
-      .module('thinkster.staff.directives', ['ngDialog']);
+      .module('openlab.staff.directives', ['ngDialog']);
 })();

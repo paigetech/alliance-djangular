@@ -1,12 +1,12 @@
 /**
 * DirectionController
-* @namespace thinkster.profiles.controllers
+* @namespace openlab.profiles.controllers
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.profiles.controllers')
+    .module('openlab.profiles.controllers')
     .controller('DirectionController', DirectionController);
 
   DirectionController.$inject = ['$routeParams', 'Direction','Snackbar'];
@@ -24,7 +24,7 @@
     /**
     * @name activate
     * @desc Actions to be performed when this controller is instantiated
-    * @memberOf thinkster.profiles.controllers.DirectionController
+    * @memberOf openlab.profiles.controllers.DirectionController
     */
     function activate() {
       var name = $routeParams.name;//.substr(1);

@@ -1,12 +1,12 @@
 /**
 * ProfileController
-* @namespace thinkster.profiles.controllers
+* @namespace openlab.profiles.controllers
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.profiles.controllers')
+    .module('openlab.profiles.controllers')
     .controller('ProfileController', ProfileController);
 
   ProfileController.$inject = ['$location', '$routeParams', 'Posts', 'Profile', 'Equipment', 'Snackbar'];
@@ -28,7 +28,7 @@
     /**
     * @name activate
     * @desc Actions to be performed when this controller is instantiated
-    * @memberOf thinkster.profiles.controllers.ProfileController
+    * @memberOf openlab.profiles.controllers.ProfileController
     */
     function activate() {
       var username = $routeParams.username;//.substr(1);
@@ -37,8 +37,8 @@
       Profile.get(username).then(profileSuccessFn, profileErrorFn);
       Posts.get(username).then(postsSuccessFn, postsErrorFn);
       Equipment.get(username).then(equipmentSuccessFn, equipmentErrorFn);//to_do: delete
-      //Profile.getApi().then(apiSuccessFn, apiErrorFn);
-
+      //Profile.getApi(username).then(apiSuccessFn, apiErrorFn);
+      //
       ///**
       //* @name profileSuccessFn
       //* @desc Redirect to index and display success snackbar
