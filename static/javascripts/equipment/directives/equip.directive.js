@@ -10,7 +10,7 @@
     .directive('equip', equip);
 
   /**
-  * @namespace Post
+  * @namespace Equipment
   */
   function equip() {
     /**

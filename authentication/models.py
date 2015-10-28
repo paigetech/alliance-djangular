@@ -61,7 +61,8 @@ class Account(AbstractBaseUser):
 
     first_name = models.CharField(max_length=40, blank=True)
     last_name = models.CharField(max_length=40, blank=True)
-    tagline = models.CharField(max_length=140, blank=True)
+
+    address = models.CharField(u'Address', max_length=200, blank=True, null=True)
     phone = models.CharField(max_length=140, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
 

@@ -41,6 +41,10 @@
             controller: 'StaffController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/staff/staff.html'
-        })//.otherwise('/');
+        }).when('/api/v1/api_root/', {
+            templateUrl: '/api/v1/api_root/'
+        }).when('/api/v1/admin/', {
+            templateUrl: '/api/v1/admin/'
+        }).otherwise('/');
     }
 })();

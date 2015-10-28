@@ -16,7 +16,7 @@
         /**
         * @name directive
         * @desc The directive to be returned
-        * @memberOf openlab.posts.directives.Profile
+        * @memberOf openlab.profile.directives.Profile
         */
         var directive = {
             controller: 'ProfilesController',

@@ -13,9 +13,10 @@
     <div class="collapse navbar-collapse" id="open-lab-nav">
       <ul class="nav navbar-nav pull-right">
         {% if user.is_authenticated %}
-{#            {% if user.is_superuser %}#}
-{#            <li><a href="javascript:void(0)" ng-controller="ProfileController as vm" ng-click="vm.getApi(user.username)">API Root</a></li>#}
-{#            {% endif %}#}
+            {% if user.is_superuser %}
+                <li><a href="/api/v1/api_root/" >API Root</a></li>
+                <li><a href="/api/v1/admin/" >admin</a></li>
+            {% endif %}
           <li><a href="/{{ user.username }}">{{ user.username }}</a></li>
           <li><a href="/{{ user.username }}/settings">Settings</a></li>
           <li><a href="javascript:void(0)" ng-click="vm.logout()">Logout</a></li>

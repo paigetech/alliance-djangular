@@ -39,7 +39,6 @@ INSTALLED_APPS = (
     'rest_framework',
     'compressor',
     'authentication',
-    'posts',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -86,6 +85,8 @@ AUTH_USER_MODEL = 'authentication.Account'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'

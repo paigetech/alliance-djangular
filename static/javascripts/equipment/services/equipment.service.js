@@ -52,7 +52,7 @@
     /**
     * @name create
     * @desc Create a new Equipment
-    * @param {string} content The content of the new Post
+    * @param {string} content The content of the new Equipment item
     * @returns {Promise}
     * @memberOf openlab.equipment.services.Equipment
     */
@@ -66,7 +66,7 @@
     /**
      * @name get
      * @desc Get the Equipment of a given user
-     * @param {string} username The username to get Posts for
+     * @param {string} username The username to get equipment for
      * @returns {Promise}
      * @memberOf openlab.equipment.services.Equipment
      */

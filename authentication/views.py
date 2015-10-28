@@ -170,7 +170,6 @@ def api_root(request, format=None):
     """Api Root"""
     return Response({
         'accounts': rest_reverse('account-list', request=request, format=format),
-        'posts': rest_reverse('post-list', request=request, format=format),
         'directions': rest_reverse('direction-list', request=request, format=format),
         'equipment': rest_reverse('equipment-list', request=request, format=format),
         'staff': rest_reverse('staff-list', request=request, format=format),

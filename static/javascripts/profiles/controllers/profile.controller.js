@@ -9,17 +9,16 @@
     .module('openlab.profiles.controllers')
     .controller('ProfileController', ProfileController);
 
-  ProfileController.$inject = ['$location', '$routeParams', 'Posts', 'Profile', 'Equipment', 'Snackbar'];
+  ProfileController.$inject = ['$location', '$routeParams', 'Profile', 'Equipment', 'Snackbar'];
 
   /**
   * @namespace ProfileController
   */
-  function ProfileController($location, $routeParams, Posts, Profile, Equipment, Snackbar) {
+  function ProfileController($location, $routeParams,  Profile, Equipment, Snackbar) {
     var vm = this;
 
     vm.profile = undefined;
     vm.direction = undefined;
-    vm.posts = [];
     vm.equips = [];
     //vm.getApi = undefined;
 
@@ -35,7 +34,6 @@
       var item_id = $routeParams.equip;
 
       Profile.get(username).then(profileSuccessFn, profileErrorFn);
-      Posts.get(username).then(postsSuccessFn, postsErrorFn);
       Equipment.get(username).then(equipmentSuccessFn, equipmentErrorFn);//to_do: delete
       //Profile.getApi(username).then(apiSuccessFn, apiErrorFn);
       //
@@ -80,22 +78,6 @@
         Snackbar.error('That user does not exist.');
       }
 
-      /**
-        * @name postsSucessFn
-        * @desc Update `posts` on viewmodel
-        */
-      function postsSuccessFn(data, status, headers, config) {
-        vm.posts = data.data;
-      }
-
-
-      /**
-        * @name postsErrorFn
-        * @desc Show error snackbar
-        */
-      function postsErrorFn(data, status, headers, config) {
-        Snackbar.error(data.data.error);
-      }
 
       /**
       * @name equipmentSuccessEquipment

@@ -52,7 +52,7 @@
     /**
     * @name create
     * @desc Create a new Staff
-    * @param {string} content The content of the new Post
+    * @param {string} staff The staff of the new Staff
     * @returns {Promise}
     * @memberOf openlab.staff.services.Staff
     */
@@ -66,7 +66,7 @@
     /**
      * @name get
      * @desc Get the Staff of a given user
-     * @param {string} username The username to get Posts for
+     * @param {string} username The username to get Staff for
      * @returns {Promise}
      * @memberOf openlab.staff.services.Staff
      */

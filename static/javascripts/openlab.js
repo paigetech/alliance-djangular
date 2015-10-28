@@ -11,7 +11,6 @@
             'openlab.routes',
             'openlab.authentication',
             'openlab.layout',
-            'openlab.posts',
             'openlab.utils',
             'openlab.profiles',
             'openlab.directions',
