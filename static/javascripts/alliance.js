@@ -25,7 +25,7 @@
         .module('alliance')
         .run(run);
 
-    run.$inject = ['$httpProvider'];
+    run.$inject = ['$http'];
 
         /**
         * @name run
