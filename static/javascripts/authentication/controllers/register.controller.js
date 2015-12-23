@@ -1,12 +1,12 @@
 /**
 * Register controller
-* @namespace thinkster.authentication.controllers
+* @namespace alliance.authentication.controllers
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.authentication.controllers')
+    .module('alliance.authentication.controllers')
     .controller('RegisterController', RegisterController);
 
   RegisterController.$inject = ['$location', '$scope', 'Authentication', '$http'];
@@ -22,11 +22,11 @@
     ///**
     //* @name register
     //* @desc Register a new user
-    //* @memberOf thinkster.authentication.controllers.RegisterController
+    //* @memberOf alliance.authentication.controllers.RegisterController
     //*/
-    //function register() {
-    //  Authentication.register(vm.email, vm.password, vm.username);
-    //}
+    function register() {
+      Authentication.register(vm.email, vm.password, vm.username);
+    }
 
     /**
     * @name register
@@ -35,7 +35,7 @@
     * @param {string} password The password entered by the user
     * @param {string} username The username entered by the user
     * @returns {Promise}
-    * @memberOf thinkster.authentication.services.Authentication
+    * @memberOf alliance.authentication.services.Authentication
     */
     function register(email, password, username) {
       return $http.post('/api/v1/accounts/', {
@@ -57,7 +57,7 @@
       * @desc Log "Epic failure!" to the console
       */
       function registerErrorFn(data, status, headers, config) {
-        console.error('Epic failure!');
+        console.error('Epic failure! ' + JSON.stringify(data));
       }
     }
 
@@ -67,7 +67,7 @@
     /**
      * @name activate
      * @desc Actions to be performed when this controller is instantiated
-     * @memberOf thinkster.authentication.controllers.RegisterController
+     * @memberOf alliance.authentication.controllers.RegisterController
      */
     function activate() {
       // If the user is authenticated, they should not be here.

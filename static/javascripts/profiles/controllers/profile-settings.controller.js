@@ -1,12 +1,12 @@
 /**
 * ProfileSettingsController
-* @namespace thinkster.profiles.controllers
+* @namespace alliance.profiles.controllers
 */
 (function () {
   'use strict';
 
   angular
-    .module('thinkster.profiles.controllers')
+    .module('alliance.profiles.controllers')
     .controller('ProfileSettingsController', ProfileSettingsController);
 
   ProfileSettingsController.$inject = [
@@ -28,7 +28,7 @@
     /**
     * @name activate
     * @desc Actions to be performed when this controller is instantiated.
-    * @memberOf thinkster.profiles.controllers.ProfileSettingsController
+    * @memberOf alliance.profiles.controllers.ProfileSettingsController
     */
     function activate() {
       var authenticatedAccount = Authentication.getAuthenticatedAccount();
@@ -70,7 +70,7 @@
     /**
     * @name destroy
     * @desc Destroy this user's profile
-    * @memberOf thinkster.profiles.controllers.ProfileSettingsController
+    * @memberOf alliance.profiles.controllers.ProfileSettingsController
     */
     function destroy() {
       Profile.destroy(vm.profile.username).then(profileSuccessFn, profileErrorFn);
@@ -99,7 +99,7 @@
     /**
     * @name update
     * @desc Update this user's profile
-    * @memberOf thinkster.profiles.controllers.ProfileSettingsController
+    * @memberOf alliance.profiles.controllers.ProfileSettingsController
     */
     function update() {
       Profile.update(vm.profile).then(profileSuccessFn, profileErrorFn);

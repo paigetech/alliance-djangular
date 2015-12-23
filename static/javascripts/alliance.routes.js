@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('thinkster.routes')
+        .module('alliance.routes')
         .config(config);
 
 

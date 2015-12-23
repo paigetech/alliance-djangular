@@ -1,4 +1,4 @@
-# thinkster-django-angular-boilerplate
+# alliance-django-angular-boilerplate
 
 ## Installation
 
@@ -7,9 +7,9 @@
 [Node.js](http://nodejs.org/).*
 
 * Fork this repository.
-* `$ git clone git@github.com:<your username>/thinkster-django-angular-boilerplate.git`
-* `$ mkvirtualenv thinkster-djangular`
-* `$ cd thinkster-django-angular-boilerplate/`
+* `$ git clone git@github.com:<your username>/alliance-django-angular-boilerplate.git`
+* `$ mkvirtualenv alliance-djangular`
+* `$ cd alliance-django-angular-boilerplate/`
 * `$ pip install -r requirements.txt`
 * `$ npm install -g bower`
 * `$ npm install`

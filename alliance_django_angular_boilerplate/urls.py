@@ -2,7 +2,7 @@ from django.conf.urls import patterns, url, include
 from rest_framework_nested import routers
 
 from authentication.views import AccountViewSet, LoginView, LogoutView
-from thinkster_django_angular_boilerplate.views import IndexView
+from alliance_django_angular_boilerplate.views import IndexView
 from posts.views import AccountPostsViewSet, PostViewSet
 
 router = routers.SimpleRouter()
