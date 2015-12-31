@@ -13,6 +13,7 @@
             'alliance.posts',
             'alliance.utils',
             'alliance.profiles',
+            'alliance.test',
         ]);
 
      angular

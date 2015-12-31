@@ -17,22 +17,37 @@
             controller: 'RegisterController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/authentication/register.html'
-        }).when('/login', {
+        })
+        .when('/login', {
             controller: 'LoginController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/authentication/login.html'
-        }).when('/', {
+        })
+        .when('/', {
             controller: 'IndexController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/layout/index.html'
-        }).when('/+:username', {
+        })
+        .when('/test', {
+          controller: 'TestController',
+          controllerAs: 'vm',
+          templateURL: '/static/templates/test/test.html'
+        })
+        .when('/logistics', {
+            controller: 'IndexController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/logistics/logistics.html'
+        })
+        .when('/+:username', {
             controller: 'ProfileController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/profiles/profile.html'
-        }).when('/+:username/settings', {
+        })
+        .when('/+:username/settings', {
             controller: 'ProfileSettingsController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/profiles/settings.html'
-        }).otherwise('/');
+        })
+        .otherwise('/');
     }
 })();
